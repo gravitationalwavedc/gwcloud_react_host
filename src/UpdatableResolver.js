@@ -56,4 +56,6 @@ class UpdatableResolver extends React.Component {
     }
 }
 
-export default UpdatableResolver;
+export {
+    UpdatableResolver
+};

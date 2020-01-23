@@ -7,13 +7,10 @@ class Home extends React.Component {
             <div>
                 <p>Home</p>
                 <p><Link to="/auth/" activeClassName="selected" exact>
-                    Auth
+                    Auth Login
                 </Link></p>
                 <p><Link to="/auth/register/" activeClassName="selected" exact>
                     Auth Register
-                </Link></p>
-                <p><Link to="/auth/login/" activeClassName="selected" exact>
-                    Auth Login
                 </Link></p>
             </div>
         );

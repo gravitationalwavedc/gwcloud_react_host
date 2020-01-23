@@ -1,6 +1,6 @@
 import React from "react";
 import {Container, Grid, Header, Menu} from "semantic-ui-react";
-import HarnessRouter from "./UpdatableResolver";
+import {UpdatableResolver} from "./UpdatableResolver";
 import {Route} from 'found'
 import Layout from "./Layout";
 import RemoteComponent from "./RemoteComponent";
@@ -10,7 +10,7 @@ import Home from "./Home";
 class GWCloudApp extends React.Component {
     render() {
         return (
-            <HarnessRouter routes={
+            <UpdatableResolver routes={
                 <Route
                     path="/"
                     Component={Layout}
@@ -18,8 +18,10 @@ class GWCloudApp extends React.Component {
                     <Route Component={Home}/>
                     <Route path="auth"
                            Component={() => (
-                                   <RemoteComponent _module_url="http://localhost:3001/main.js"
-                                                    _component_name="SimpleComponent"/>
+                               <RemoteComponent
+                                   _module_url="http://localhost:3001/main.js"
+                                   _component_name="SimpleComponent"
+                               />
                            )}
                     >
                     </Route>

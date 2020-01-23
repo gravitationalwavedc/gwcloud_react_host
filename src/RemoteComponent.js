@@ -1,15 +1,20 @@
 import React from "react";
 
+const module_map = {};
+
 class RemoteComponent extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            component: null
+            component: module_map[props._module_url + props._component_name] || null
         }
     }
 
     componentDidMount() {
+        if (this.state.component)
+            return;
+
         const p = new Promise((resolve, reject) => {
             const request = new XMLHttpRequest();
 
@@ -28,6 +33,7 @@ class RemoteComponent extends React.Component {
         });
 
         p.then(m => {
+            module_map[this.props._module_url + this.props._component_name] = m[this.props._component_name];
             this.setState({component: m[this.props._component_name]})
         }).catch(e => {
             console.log("Error loading external component", e)
