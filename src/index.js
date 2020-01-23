@@ -3,8 +3,10 @@ import GWCloudApp from "./App";
 import React from "react";
 import ReactDOM from "react-dom"
 
-const container = document.getElementById('gwcloud_conainer');
+// Assets
+import 'semantic-ui-css/semantic.min.css'
 
+const container = document.getElementById('gwcloud_container');
 
 // The container was found, mount the application
 ReactDOM.render(<GWCloudApp/>, container);

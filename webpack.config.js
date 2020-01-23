@@ -44,7 +44,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|jp(e*)g|svg)$/,
+                test: /\.(jpg|JPG|jpeg|png|gif|mp3|svg|ttf|woff2|woff|eot)$/,
                 use: [
                     {
                         loader: 'url-loader',
@@ -65,6 +65,7 @@ module.exports = {
     // Server Configuration options
     devServer: {
         host: '0.0.0.0',
+        port: 3000,
         disableHostCheck: true,
         historyApiFallback: true
     },
