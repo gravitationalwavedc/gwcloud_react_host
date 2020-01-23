@@ -1,18 +1,19 @@
 import React from "react";
+import {updateRoutes} from "./UpdatableResolver";
 
 const module_map = {};
 
-class RemoteComponent extends React.Component {
+class RemoteModule extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            component: module_map[props._module_url + props._component_name] || null
+            module: props._module_url in module_map ? module_map[props._module_url]: null
         }
     }
 
     componentDidMount() {
-        if (this.state.component)
+        if (this.props._module_url in module_map)
             return;
 
         const p = new Promise((resolve, reject) => {
@@ -33,20 +34,24 @@ class RemoteComponent extends React.Component {
         });
 
         p.then(m => {
-            module_map[this.props._module_url + this.props._component_name] = m[this.props._component_name];
-            this.setState({component: m[this.props._component_name]})
+            module_map[this.props._module_url] = m;
+
+            updateRoutes(this.props._path, m['getRoutes']());
+
+            this.setState({module: m})
         }).catch(e => {
             console.log("Error loading external component", e)
         });
     }
 
     render() {
-        if (!this.state.component)
+        if (!this.state.module)
             return (
                 <div>Loading...</div>
             );
-        return React.createElement(this.state.component, {children: []});
+        console.log(this.props.children)
+        return this.props.children || null;
     }
 }
 
-export default RemoteComponent;
+export default RemoteModule;
