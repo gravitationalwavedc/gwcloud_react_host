@@ -1,11 +1,6 @@
 import React from 'react'
 import {BrowserProtocol, queryMiddleware} from "farce";
-import {
-    createFarceRouter,
-    createRender,
-    makeRouteConfig,
-    Route,
-} from 'found';
+import {createRender, makeRouteConfig,} from 'found';
 import {Resolver} from "found-relay";
 import getEnvironment from "./Environment";
 import Enumerable from 'linq'
@@ -52,11 +47,9 @@ class UpdatableResolver extends React.Component {
 
         const t = React.cloneElement(this.props.routes, this.props.routes.props, copyChildren(this.props.routes.props.children));
 
-        console.log("new routes", t)
-
-        replaceRouteConfig(makeRouteConfig(
-            t
-        ));
+        replaceRouteConfig(
+            makeRouteConfig(t)
+        );
 
         // Trigger a redraw
         this.setState({
@@ -82,6 +75,7 @@ class UpdatableResolver extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         if (!this.state.router) {
             setTimeout(() => this.setState({
                     router: this.createRouter(this.props.routes),

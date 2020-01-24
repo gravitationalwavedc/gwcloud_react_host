@@ -1,11 +1,9 @@
 import React from "react";
-import {Container, Grid, Header, Menu} from "semantic-ui-react";
 import {UpdatableResolver} from "./UpdatableResolver";
 import {Route} from 'found'
 import Layout from "./Layout";
 import RemoteModule from "./RemoteModule";
 import Home from "./Home";
-
 
 class GWCloudApp extends React.Component {
     render() {
