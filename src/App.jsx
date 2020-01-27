@@ -4,6 +4,7 @@ import {Route} from 'found'
 import Layout from "./Layout";
 import RemoteModule from "./RemoteModule";
 import Home from "./Home";
+import NotFound from "./NotFound";
 
 class GWCloudApp extends React.Component {
     render() {
@@ -23,8 +24,10 @@ class GWCloudApp extends React.Component {
                                    {...props}
                                />
                            )}
-                    >
-                    </Route>
+                    />
+                    <Route path="*"
+                        Component={NotFound}
+                    />
                 </Route>
             }/>
         )
