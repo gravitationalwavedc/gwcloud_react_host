@@ -13,10 +13,10 @@ function getEnvironment(name) {
 
     // Create a network layer from the fetch function
     const network = Network.create((operation, variables) => {
-        return fetch(IS_DEV ? Modules[name].dev_url : Modules[name].url, {
+        return fetch(IS_DEV ? Modules[name].dev_graphql_url : Modules[name].graphql_url, {
             method: 'POST',
             headers: {
-                // Add authentication and other headers here
+                'Authorization': 'JWT ' + (localStorage.authToken || ''),
                 'content-type': 'application/json'
             },
             body: JSON.stringify({

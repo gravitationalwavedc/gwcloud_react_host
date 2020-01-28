@@ -3,7 +3,6 @@ import React from "react";
 import Link from 'found/lib/Link';
 
 function Layout(props) {
-    console.log(props)
     return (
         <div>
             <Menu fixed={'top'}>

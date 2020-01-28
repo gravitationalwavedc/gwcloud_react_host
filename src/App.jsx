@@ -5,29 +5,42 @@ import Layout from "./Layout";
 import RemoteModule from "./RemoteModule";
 import Home from "./Home";
 import NotFound from "./NotFound";
+import Modules from './Modules'
+import * as Enumerable from "linq";
+import {IS_DEV} from "./Utils";
+
 
 class GWCloudApp extends React.Component {
     render() {
+        let modules = Enumerable.from(Modules).select((e, i) => (
+            <Route key={i}
+                   path={e.key + "*"}
+                   Component={props => (
+                       <RemoteModule
+                           _module_url={IS_DEV ? e.value.dev_bundle_url : e.value.bundle_url}
+                           _path={e.key}
+                           {...props}
+                       />
+                   )}
+            />
+        )).toArray();
+
+        modules = [
+            (<Route Component={Home} key="home"/>),
+            ...modules,
+            (<Route path="*" key="notfound" Component={NotFound}/>)
+        ];
+
         return (
             <UpdatableResolver routes={
                 <Route
                     path="/"
                     Component={Layout}
                 >
-                    <Route Component={Home}/>
+                    {
+                        modules
+                    }
 
-                    <Route path="auth*"
-                           Component={props => (
-                               <RemoteModule
-                                   _module_url="http://localhost:3001/main.js"
-                                   _path="auth"
-                                   {...props}
-                               />
-                           )}
-                    />
-                    <Route path="*"
-                        Component={NotFound}
-                    />
                 </Route>
             }/>
         )
