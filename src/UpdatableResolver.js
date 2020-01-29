@@ -1,10 +1,10 @@
 import React from 'react'
 import {BrowserProtocol, queryMiddleware} from "farce";
 import {createRender, makeRouteConfig,} from 'found';
-import {Resolver} from "found-relay";
 import getEnvironment from "./Environment";
 import Enumerable from 'linq'
 import {gwCloudCreateFarceRouter, replaceRouteConfig} from "./farce/GWCloudCreateFarceRouter";
+import Resolver from "./router/Resolver";
 
 let updateRoutes = () => {
 };
@@ -32,7 +32,6 @@ class UpdatableResolver extends React.Component {
                     const props = {...c.props};
                     props.path = path;
                     props.Component = null;
-                    console.log("found", path, props)
                     return React.cloneElement(c, {key: keyCounter++, ...props}, routes);
                 }
 
@@ -59,7 +58,7 @@ class UpdatableResolver extends React.Component {
     }
 
     createResolver() {
-        return new Resolver(getEnvironment("auth"));
+        return new Resolver();
     }
 
     createRouter(routes) {
@@ -75,7 +74,6 @@ class UpdatableResolver extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         if (!this.state.router) {
             setTimeout(() => this.setState({
                     router: this.createRouter(this.props.routes),

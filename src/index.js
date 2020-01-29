@@ -1,10 +1,10 @@
 // Get the container to mount the react application in
-import GWCloudApp from "./App";
 import React from "react";
 import ReactDOM from "react-dom"
 
 // Assets
 import 'semantic-ui-css/semantic.min.css'
+import GWCloudApp from "./App";
 
 const container = document.getElementById('gwcloud_container');
 

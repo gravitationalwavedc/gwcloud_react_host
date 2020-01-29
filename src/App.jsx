@@ -1,5 +1,5 @@
 import React from "react";
-import {UpdatableResolver} from "./UpdatableResolver";
+import {redirect, UpdatableResolver} from "./UpdatableResolver";
 import {Route} from 'found'
 import Layout from "./Layout";
 import RemoteModule from "./RemoteModule";
@@ -8,7 +8,9 @@ import NotFound from "./NotFound";
 import Modules from './Modules'
 import * as Enumerable from "linq";
 import {IS_DEV} from "./Utils";
-
+import {graphql} from "react-relay";
+import HarnessApi from "./HarnessApi";
+import {getEnvironment} from "./Environment";
 
 class GWCloudApp extends React.Component {
     render() {
@@ -36,6 +38,24 @@ class GWCloudApp extends React.Component {
                 <Route
                     path="/"
                     Component={Layout}
+                    environment={getEnvironment('auth')}
+                    query={graphql`
+                       query App_UserDetails_Query {
+                         gwclouduser {
+                           username
+                           firstName
+                           lastName
+                         }
+                       }
+                    `}
+                    render={({Component, props, retry, error}) => {
+                        if (!Component || !props)
+                            return <div>Loading...</div>;
+
+                        HarnessApi.retryHarnessUserDetails = retry;
+
+                        return <Component {...props}/>
+                    }}
                 >
                     {
                         modules

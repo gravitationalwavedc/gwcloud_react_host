@@ -7,57 +7,60 @@ const module_map = {};
 class RemoteModule extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            module: props._module_url in module_map ? module_map[props._module_url]: null
-        }
     }
 
     componentDidMount() {
-        if (this.props._module_url in module_map)
+        // Check if this module is current loading
+        if (module_map[this.props._module_url] === "loading")
+            // Don't do anything, we've been remounted during the loading of the specified module
             return;
 
-        const p = new Promise((resolve, reject) => {
-            const request = new XMLHttpRequest();
+        if (this.props._module_url in module_map)
+            this.loadModule(module_map[this.props._module_url]);
+        else {
+            // Make this module as loading
+            module_map[this.props._module_url] = "loading";
 
-            request.onload = () => {
-                if (request.status >= 200 && request.status < 400) {
-                    const src = request.responseText;
-                    const module = window.eval(src);
-                    return resolve(module);
-                } else {
-                    return reject();
-                }
-            };
+            const p = new Promise((resolve, reject) => {
+                const request = new XMLHttpRequest();
 
-            request.open('GET', this.props._module_url);
-            request.send();
-        });
+                request.onload = () => {
+                    if (request.status >= 200 && request.status < 400) {
+                        const src = request.responseText;
+                        const module = window.eval(src);
+                        return resolve(module);
+                    } else {
+                        return reject();
+                    }
+                };
 
-        p.then(m => {
-            module_map[this.props._module_url] = m;
+                request.open('GET', this.props._module_url);
+                request.send();
+            });
 
-            // Check if this module consumes any api from the harness and set the pointer
-            if ('setHarnessApi' in m)
-                m['setHarnessApi'](HarnessApi);
+            p.then(m => {
+                module_map[this.props._module_url] = m;
 
-            // Get the routes from the module and then update the parent routes
-            updateRoutes(this.props._path, m['getRoutes']());
+                this.loadModule(m);
+            }).catch(e => {
+                console.log("Error loading external component", e)
+            });
+        }
+    }
 
-            // Set the module in the state to force a redrow
-            this.setState({module: m})
-        }).catch(e => {
-            console.log("Error loading external component", e)
-        });
+    loadModule(m) {
+        // Check if this module consumes any api from the harness and set the pointer
+        if ('setHarnessApi' in m)
+            m['setHarnessApi'](HarnessApi);
+
+        // Get the routes from the module and then update the parent routes
+        updateRoutes(this.props._path, m['getRoutes']());
     }
 
     render() {
-        if (!this.state.module)
-            return (
-                <div>Loading...</div>
-            );
-        console.log(this.props.children)
-        return this.props.children || null;
+        return (
+            <div>Loading...</div>
+        );
     }
 }
 

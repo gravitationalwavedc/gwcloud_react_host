@@ -2,8 +2,8 @@ import FarceActions from 'farce/lib/Actions';
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import createConnectedRouter from 'found/lib/createConnectedRouter';
 import createFarceStore from 'found/lib/utils/createFarceStore';
+import createConnectedRouter from "../router/createConnectedRouter";
 
 let replaceRouteConfig = () => {};
 

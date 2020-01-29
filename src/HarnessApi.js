@@ -1,4 +1,4 @@
-import getEnvironment from "./Environment";
+import {getEnvironment} from "./Environment";
 
 function setAuthTokens(token, refreshToken) {
     localStorage.authToken = token;
@@ -7,7 +7,9 @@ function setAuthTokens(token, refreshToken) {
 
 const HarnessApi = {
     getEnvironment: getEnvironment,
-    setAuthTokens: setAuthTokens
+    setAuthTokens: setAuthTokens,
+    // retryHarnessUserDetails is set in App.jsx when Layout is rendered
+    retryHarnessUserDetails: () => {},
 };
 
 export default HarnessApi;
