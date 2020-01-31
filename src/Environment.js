@@ -98,5 +98,6 @@ function getEnvironment(name) {
 }
 
 export {
-    getEnvironment
+    getEnvironment,
+    logout
 };

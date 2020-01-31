@@ -1,6 +1,7 @@
-import {Grid, Menu} from "semantic-ui-react";
+import {Button, Dropdown, Grid, Menu} from "semantic-ui-react";
 import React from "react";
 import Link from 'found/lib/Link';
+import {logout} from './Environment';
 
 function Layout(props) {
     return (
@@ -12,7 +13,13 @@ function Layout(props) {
                 </Menu.Item>
                 <Menu.Item as='div'><Link to="/" activeClassName="selected" exact>Home</Link></Menu.Item>
                 <Menu.Item as='div' position='right'>{
-                    props.gwclouduser ? props.gwclouduser.firstName + " " + props.gwclouduser.lastName : (<Link to="/auth/" activeClassName="selected" exact>Login</Link>)
+                    props.gwclouduser ? 
+                        <Dropdown item text={props.gwclouduser.firstName + " " + props.gwclouduser.lastName}>
+                            <Dropdown.Menu>
+                                <Dropdown.Item onClick={() => {logout()}}>Logout</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    : (<Link to="/auth/" activeClassName="selected" exact>Login</Link>)
                 }</Menu.Item>
                 {/*</Container>*/}
             </Menu>
