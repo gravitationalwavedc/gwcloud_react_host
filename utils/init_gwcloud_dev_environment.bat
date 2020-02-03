@@ -9,7 +9,7 @@ cd ..\gwcloud_auth
 git pull
 
 rem Set up npm for the react host
-cd ..\gwcloud_react_host
+cd ..\gwcloud_react_host\src
 set /p nodeversion=<.nvmrc
 nvm install %nodeversion%
 nvm use %nodeversion%
@@ -17,7 +17,7 @@ timeout /t 2 /nobreak > nul
 cmd /C npm install
 
 rem Set up npm for the auth module
-cd ..\gwcloud_auth\react
+cd ..\..\gwcloud_auth\src\react
 set /p nodeversion=<.nvmrc
 nvm install %nodeversion%
 nvm use %nodeversion%

@@ -14,13 +14,13 @@ cd ../gwcloud_auth
 git pull
 
 echo Set up npm for the react host
-cd ../gwcloud_react_host
+cd ../gwcloud_react_host/src
 nvm install $(cat .nvmrc)
 nvm use $(cat .nvmrc)
 npm install
 
 echo Set up npm for the auth module
-cd ../gwcloud_auth/react
+cd ../../gwcloud_auth/src/react
 nvm install $(cat .nvmrc)
 nvm use $(cat .nvmrc)
 npm install
