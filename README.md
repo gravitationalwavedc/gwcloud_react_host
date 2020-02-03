@@ -81,7 +81,7 @@ Run the script in this directory by double clicking it or `cd`ing to this direct
 
 
 
-## Starting the Dev server
+## Starting the dev server
 
 There are three servers that must be started for minimal development:-
 
@@ -90,3 +90,9 @@ There are three servers that must be started for minimal development:-
 * The auth django server `python development-manage.py runserver` - port 8000
 
 There are helper scripts in the utils directory of this repo, move the relevant `start_gwcloud` script to the repository root directory (ie where `gwcloud_react_host` and `gwcloud_auth` are), and run the `start_gwcloud` script.
+
+
+
+## Adding a new module
+
+To add a new module to the harness, add a new entry in to the `Modules.js` file, this will automatically make the name of the module available as a url path as the key of the entry. ie `/auth/`

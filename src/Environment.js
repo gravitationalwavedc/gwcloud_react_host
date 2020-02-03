@@ -23,7 +23,7 @@ function logout(path) {
 }
 
 function requestRefreshToken(name) {
-    return fetch(IS_DEV ? Modules[name].dev_graphql_url : Modules[name].graphql_url, {
+    return fetch(IS_DEV ? Modules['auth'].dev_graphql_url : Modules['auth'].graphql_url, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -71,7 +71,7 @@ function getEnvironment(name) {
         authMiddleware({
             token: () => localStorage.authToken,
             prefix: "JWT ",
-            tokenRefreshPromise: (req) => requestRefreshToken(name)
+            tokenRefreshPromise: (req) => requestRefreshToken()
         }),
         (next) => async (req) => {
             console.log('RelayRequest', req);
