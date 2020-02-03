@@ -6,13 +6,6 @@ const Modules = {
         graphql_url: "/auth/graphql",
         bundle_url: "/auth/static/main.js"
     },
-    test: {
-        dev_graphql_url: "http://localhost:8001/graphql",
-        dev_bundle_url: "http://localhost:3002/main.js",
-
-        graphql_url: "/auth/graphql",
-        bundle_url: "/auth/static/main.js"
-    }
 };
 
 export default Modules;
