@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --mode development --hot ",
     "start_win": "set \"NODE_ENV=development\" && webpack-dev-server --mode development --hot ",
     "build": "webpack --mode production",
-    "relay": "relay-compiler --src ./src --schema ../gwcloud_auth/react/data/schema.json --extensions=js --extensions=jsx"
+    "relay": "relay-compiler --src ./src --schema ../../gwcloud_auth/src/react/data/schema.json --extensions=js --extensions=jsx"
   },
   "keywords": [],
   "author": "",
