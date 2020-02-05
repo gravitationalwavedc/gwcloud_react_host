@@ -66,6 +66,7 @@ module.exports = {
     output: {
         publicPath: "/",
         globalObject: "this",
+	path: "/static/"
     },
     // Server Configuration options
     devServer: {
@@ -78,6 +79,7 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: "./src/index.html",
             filename: "./index.html",
+	    hash: true,
         }),
         new webpack.DefinePlugin({
             'process.env': {

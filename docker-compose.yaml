@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  gwcloud_react_host_static:
+    build:
+      dockerfile: ./docker/gwcloud_react_host_static.Dockerfile
+      context: .
+    image: nexus.gw-cloud.org/gwcloud-dev/gwcloud_react_host_static:0.1
+    container_name: gwcloud_react_host_static
+    ports:
+      - "80"
+  
+  gwcloud_react_host_nginx: 
+    # On kubernetes, this is replaced by nginx ingress controller
+    build:
+      dockerfile: ./docker/gwcloud_react_host_nginx.Dockerfile
+      context: .
+    image: nexus.gw-cloud.org/gwcloud-dev/gwcloud_react_host_nginx:0.1
+    container_name: gwcloud_react_host_nginx
+    ports:
+      - "8000:8000"
+    depends_on:
+      - gwcloud_react_host_static
