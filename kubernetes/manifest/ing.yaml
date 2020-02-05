@@ -1,0 +1,26 @@
+---
+# Ingress
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gwc-ing
+  namespace: gwcloud
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: gw-cloud.org
+    http:
+      paths:
+      - path: /auth
+        backend:
+          serviceName: gwcloud-auth
+          servicePort: 80
+      - path: /auth/Shibboleth.sso
+        backend:
+          serviceName: gwcloud-auth
+          servicePort: 80
+      - path: /
+        backend:
+          serviceName: gwcloud-react-host
+          servicePort: 8000

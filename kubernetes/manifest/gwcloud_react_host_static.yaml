@@ -3,7 +3,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: gwcloud_react_host
+  name: gwcloud-react-host
   namespace: gwcloud
   labels:
     name: gwcloud_react_host
@@ -15,8 +15,8 @@ spec:
         name: gwcloud_react_host
     spec:
       containers:
-      - name: gwcloud_react_host
-        image: nexus.gw-cloud.org/gwcloud-dev/gwcloud_react_host_nginx:0.1
+      - name: gwcloud-react-host
+        image: nexus.gw-cloud.org/gwcloud-dev/gwcloud_react_host_static:0.1
         ports:
         - name: http
           containerPort: 8000
@@ -24,29 +24,6 @@ spec:
         tty: true
       imagePullSecrets:
       - name: regcred
-    nodeSelector:
-      kubernetes.io/hostname: k8s-3
----
-# NodePort service
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    name: gwcloud-react-host
-  name: gwcloud-react-host
-  namespace: gwcloud
-spec:
-  externalTrafficPolicy: Cluster
-  ports:
-  - name: port-http
-    nodePort: 31602
-    port: 8000
-    protocol: TCP
-    targetPort: 8000
-  selector:
-    name: gwcloud-react-host
-  sessionAffinity: None
-  type: NodePort
-status:
-  loadBalancer: {}
+      nodeSelector:
+        kubernetes.io/hostname: k8s-3
 ... 
