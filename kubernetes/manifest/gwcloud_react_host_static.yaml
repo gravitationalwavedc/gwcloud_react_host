@@ -9,6 +9,11 @@ metadata:
     name: gwcloud_react_host
 spec:
   replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   template:
     metadata:
       labels:
@@ -16,14 +21,21 @@ spec:
     spec:
       containers:
       - name: gwcloud-react-host
-        image: nexus.gw-cloud.org/gwcloud-dev/gwcloud_react_host_static:0.1
+        image: nexus.gw-cloud.org/gwcloud-dev/gwcloud_react_host_static:0.2
         ports:
         - name: http
           containerPort: 8000
         resources: {}
         tty: true
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
       imagePullSecrets:
       - name: regcred
       nodeSelector:
         kubernetes.io/hostname: k8s-3
-... 
+...
