@@ -28,6 +28,12 @@ class RemoteModule extends React.Component {
                     if (request.status >= 200 && request.status < 400) {
                         const src = request.responseText;
                         const module = window.eval(src);
+
+                        // Remove window ref if one exists
+                        if (window.RemoteModule)
+                            delete window.RemoteModule;
+
+                        // Resolve the promise
                         return resolve(module);
                     } else {
                         return reject();
