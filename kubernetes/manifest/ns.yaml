@@ -1,0 +1,11 @@
+---
+# dg_bilby
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gwcloud
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active
