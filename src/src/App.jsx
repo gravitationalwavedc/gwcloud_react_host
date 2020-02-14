@@ -52,10 +52,12 @@ class GWCloudApp extends React.Component {
                         if (!Component || !props)
                             return <div>Loading...</div>;
 
+                        HarnessApi.currentUser = props.gwclouduser;
                         HarnessApi.retryHarnessUserDetails = retry;
 
                         return <Component {...props}/>
                     }}
+                    on
                 >
                     {
                         modules

@@ -10,6 +10,8 @@ const HarnessApi = {
     setAuthTokens: setAuthTokens,
     // retryHarnessUserDetails is set in App.jsx when Layout is rendered
     retryHarnessUserDetails: () => {},
+    // currentUser is set in App.jsx when Layout is rendered
+    currentUser: null
 };
 
 export default HarnessApi;
