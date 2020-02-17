@@ -18,6 +18,9 @@ function logout(path) {
     HarnessApi.setAuthTokens("", "");
     HarnessApi.currentUser = null;
 
+    // Update the header
+    HarnessApi.retryHarnessUserDetails();
+
     // Redirect to the login page
     router.replace(path ? "/auth/?next=" + path : "/auth/");
 }

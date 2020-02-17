@@ -12,15 +12,17 @@ function Layout(props) {
                     GW Cloud
                 </Menu.Item>
                 <Menu.Item as='div'><Link to="/" activeClassName="selected" exact>Home</Link></Menu.Item>
-                <Menu.Item as='div' position='right'>{
-                    props.gwclouduser ? 
-                        <Dropdown item text={props.gwclouduser.firstName + " " + props.gwclouduser.lastName}>
+                <Menu.Menu position='right'>{
+                    props.gwclouduser ?
+                        <Dropdown floating item text={props.gwclouduser.firstName + " " + props.gwclouduser.lastName}>
                             <Dropdown.Menu>
-                                <Dropdown.Item onClick={() => {logout()}}>Logout</Dropdown.Item>
+                                <Menu.Item onClick={() => {logout()}}>Logout</Menu.Item>
                             </Dropdown.Menu>
                         </Dropdown>
-                    : (<Link to="/auth/" activeClassName="selected" exact>Login</Link>)
-                }</Menu.Item>
+                    : <Menu.Item as='div'>
+                        <Link to="/auth/" activeClassName="selected" exact>Login</Link>
+                        </Menu.Item>
+                }</Menu.Menu>
                 {/*</Container>*/}
             </Menu>
             <Grid columns={1}>
