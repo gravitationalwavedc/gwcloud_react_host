@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 74717536eabd404c082ff513226b5717
+ * @relayHash 4b1b88b97cd228ad03f59ff0e7f9e841
  */
 
 /* eslint-disable */
@@ -9,12 +9,11 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
+type Layout_data$ref = any;
 export type App_UserDetails_QueryVariables = {||};
 export type App_UserDetails_QueryResponse = {|
   +gwclouduser: ?{|
-    +username: ?string,
-    +firstName: ?string,
-    +lastName: ?string,
+    +$fragmentRefs: Layout_data$ref
   |}
 |};
 export type App_UserDetails_Query = {|
@@ -27,49 +26,18 @@ export type App_UserDetails_Query = {|
 /*
 query App_UserDetails_Query {
   gwclouduser {
-    username
-    firstName
-    lastName
+    ...Layout_data
   }
+}
+
+fragment Layout_data on UserDetails {
+  username
+  firstName
+  lastName
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
-var v0 = [
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "gwclouduser",
-    "storageKey": null,
-    "args": null,
-    "concreteType": "UserDetails",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "username",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "firstName",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "lastName",
-        "args": null,
-        "storageKey": null
-      }
-    ]
-  }
-];
-return {
+const node/*: ConcreteRequest*/ = {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
@@ -77,23 +45,72 @@ return {
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
-    "selections": (v0/*: any*/)
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "gwclouduser",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "UserDetails",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "FragmentSpread",
+            "name": "Layout_data",
+            "args": null
+          }
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "App_UserDetails_Query",
     "argumentDefinitions": [],
-    "selections": (v0/*: any*/)
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "gwclouduser",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "UserDetails",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "username",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "firstName",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "lastName",
+            "args": null,
+            "storageKey": null
+          }
+        ]
+      }
+    ]
   },
   "params": {
     "operationKind": "query",
     "name": "App_UserDetails_Query",
     "id": null,
-    "text": "query App_UserDetails_Query {\n  gwclouduser {\n    username\n    firstName\n    lastName\n  }\n}\n",
+    "text": "query App_UserDetails_Query {\n  gwclouduser {\n    ...Layout_data\n  }\n}\n\nfragment Layout_data on UserDetails {\n  username\n  firstName\n  lastName\n}\n",
     "metadata": {}
   }
 };
-})();
 // prettier-ignore
-(node/*: any*/).hash = '03eff934c50f46ee0426f99e565a27e3';
+(node/*: any*/).hash = 'fe87545e426370ba8bba52c593d2838c';
 module.exports = node;

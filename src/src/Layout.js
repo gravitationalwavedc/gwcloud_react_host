@@ -2,8 +2,13 @@ import {Button, Dropdown, Grid, Menu} from "semantic-ui-react";
 import React from "react";
 import Link from 'found/lib/Link';
 import {logout} from './Environment';
+import {createFragmentContainer} from "react-relay"
+import HarnessApi from "./HarnessApi";
 
 function Layout(props) {
+    // Update the current user
+    HarnessApi.currentUser = props.gwclouduser;
+
     return (
         <div>
             <Menu fixed={'top'}>
@@ -34,4 +39,12 @@ function Layout(props) {
     )
 }
 
-export default Layout;
+export default createFragmentContainer(Layout, {
+    gwclouduser: graphql`
+        fragment Layout_data on UserDetails {
+          username
+          firstName
+          lastName
+        }
+    `
+});
