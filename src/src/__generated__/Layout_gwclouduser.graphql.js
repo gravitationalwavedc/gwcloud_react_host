@@ -9,18 +9,18 @@
 /*::
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type Layout_data$ref: FragmentReference;
-declare export opaque type Layout_data$fragmentType: Layout_data$ref;
-export type Layout_data = {|
+declare export opaque type Layout_gwclouduser$ref: FragmentReference;
+declare export opaque type Layout_gwclouduser$fragmentType: Layout_gwclouduser$ref;
+export type Layout_gwclouduser = {|
   +username: ?string,
   +firstName: ?string,
   +lastName: ?string,
-  +$refType: Layout_data$ref,
+  +$refType: Layout_gwclouduser$ref,
 |};
-export type Layout_data$data = Layout_data;
-export type Layout_data$key = {
-  +$data?: Layout_data$data,
-  +$fragmentRefs: Layout_data$ref,
+export type Layout_gwclouduser$data = Layout_gwclouduser;
+export type Layout_gwclouduser$key = {
+  +$data?: Layout_gwclouduser$data,
+  +$fragmentRefs: Layout_gwclouduser$ref,
   ...
 };
 */
@@ -28,7 +28,7 @@ export type Layout_data$key = {
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "Layout_data",
+  "name": "Layout_gwclouduser",
   "type": "UserDetails",
   "metadata": null,
   "argumentDefinitions": [],
@@ -57,5 +57,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '148d7e2507a045f448d4e7931c13f669';
+(node/*: any*/).hash = 'a27a80b22cddd895e288e7935327583d';
 module.exports = node;

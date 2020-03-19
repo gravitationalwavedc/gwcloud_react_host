@@ -42,7 +42,7 @@ class GWCloudApp extends React.Component {
                     query={graphql`
                        query App_UserDetails_Query {
                          gwclouduser {
-                           ...Layout_data
+                           ...Layout_gwclouduser
                          }                         
                        }
                     `}
