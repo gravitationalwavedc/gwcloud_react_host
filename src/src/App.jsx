@@ -42,10 +42,8 @@ class GWCloudApp extends React.Component {
                     query={graphql`
                        query App_UserDetails_Query {
                          gwclouduser {
-                           username
-                           firstName
-                           lastName
-                         }
+                           ...Layout_gwclouduser
+                         }                         
                        }
                     `}
                     render={({Component, props, retry, error}) => {
@@ -54,8 +52,9 @@ class GWCloudApp extends React.Component {
 
                         HarnessApi.retryHarnessUserDetails = retry;
 
-                        return <Component {...props}/>
+                        return <Component gwclouduser={props.gwclouduser}/>
                     }}
+                    on
                 >
                     {
                         modules

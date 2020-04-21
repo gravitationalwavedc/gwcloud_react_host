@@ -11,12 +11,15 @@ import {router} from './router/createBaseRouter'
 let environment_map = {};
 
 function logout(path) {
-    console.log(path)
     // Reset all environments
     environment_map = {};
 
-    // Clear the auth tokens
+    // Clear the auth tokens and user
     HarnessApi.setAuthTokens("", "");
+    HarnessApi.currentUser = null;
+
+    // Update the header
+    HarnessApi.retryHarnessUserDetails();
 
     // Redirect to the login page
     router.replace(path ? "/auth/?next=" + path : "/auth/");

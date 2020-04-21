@@ -9,7 +9,7 @@ RUN cd /tmp && git clone https://github.com/gravitationalwavedc/gwcloud_auth.git
 WORKDIR /tmp/gwcloud_auth/src
 RUN virtualenv -p python3 venv
 RUN venv/bin/pip install -r requirements.txt
-RUN mkdir logs
+RUN mkdir -p logs
 # Build the graphql schema from the auth repo
 RUN venv/bin/python development-manage.py graphql_schema
 
