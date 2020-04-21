@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: gwcloud-react-host
-        image: nexus.gw-cloud.org/gwcloud-dev/gwcloud_react_host_static:0.2
+        image: nexus.gw-cloud.org/gwcloud-dev/gwcloud_react_host_static:0.4
         ports:
         - name: http
           containerPort: 8000
@@ -36,4 +36,6 @@ spec:
           successThreshold: 1
       imagePullSecrets:
       - name: regcred
+      nodeSelector:
+        kubernetes.io/hostname: deployment-3
 ...

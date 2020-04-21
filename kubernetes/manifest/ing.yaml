@@ -9,6 +9,10 @@ metadata:
   # nginx.ingress.kubernetes.io/use-regex: "true"
     #kubernetes.io/ingress.class: "nginx"
     #nginx.ingress.kubernetes.io/rewrite-target: /$1
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-read-timeout: 3600
+    nginx.ingress.kubernetes.io/proxy-send-timeout: 3600
 spec:
   host: gw-cloud.org
   upstreams:
@@ -18,10 +22,22 @@ spec:
     - name: gwcloud-react-host
       service: gwcloud-react-host
       port: 8000
+    - name: gwcloud-job-server-http
+      service: gwcloud-job-server
+      port: 8000
+    - name: gwcloud-job-server-websocket
+      service: gwcloud-job-server
+      port: 8001
   routes:
-    - path: ~* ^(/auth/static/.*|/auth/graphql|/auth/ligo/)
+    - path: ~* ^(/auth/static/.*|/auth/graphql|/auth/ligo/|/Shibboleth.sso.*)
       action:
         pass: gwcloud-auth
+    - path: ~* ^(/job/ws.*)
+      action:
+        pass: gwcloud-job-server-websocket
+    - path: ~* ^(/job/.*)
+      action:
+        pass: gwcloud-job-server-http
     - path: / 
       action:
         pass: gwcloud-react-host 
