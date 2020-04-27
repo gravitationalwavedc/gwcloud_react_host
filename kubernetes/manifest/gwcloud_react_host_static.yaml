@@ -6,7 +6,7 @@ metadata:
   name: gwcloud-react-host
   namespace: gwcloud
   labels:
-    name: gwcloud_react_host
+    name: gwcloud-react-host
 spec:
   replicas: 1
   strategy:
@@ -16,11 +16,11 @@ spec:
       maxSurge: 1
   selector:
     matchLabels:
-        name: gwcloud_react_host
+        name: gwcloud-react-host
   template:
     metadata:
       labels:
-        name: gwcloud_react_host
+        name: gwcloud-react-host
     spec:
       containers:
       - name: gwcloud-react-host
