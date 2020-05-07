@@ -1,6 +1,6 @@
 resources:
   - ns.yaml
-  # - secret.yaml # implies secret has been predeployed
+  - gwcloud_secrets_manager.yaml
   - ing.yaml
   - gwcloud_react_host_static.yaml
   - gwcloud_react_host_static_service_cp.yaml
