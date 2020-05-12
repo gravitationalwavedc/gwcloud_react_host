@@ -28,10 +28,16 @@ spec:
     - name: gwcloud-job-server-websocket
       service: gwcloud-job-server
       port: 8001
+    - name: gwcloud-bilby
+      service: gwcloud-bilby
+      port: 8000
   routes:
     - path: ~* ^(/auth/static/.*|/auth/graphql|/auth/ligo/|/Shibboleth.sso.*)
       action:
         pass: gwcloud-auth
+    - path: ~* ^(/bilby/static/.*|/bilby/graphql)
+      action:
+        pass: gwcloud-bilby
     - path: ~* ^(/job/ws.*)
       action:
         pass: gwcloud-job-server-websocket

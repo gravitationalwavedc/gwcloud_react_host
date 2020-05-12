@@ -10,8 +10,8 @@ const Modules = {
         dev_graphql_url: "http://localhost:8001/graphql",
         dev_bundle_url: "http://localhost:3002/main.js",
 
-        graphql_url: "/auth/graphql",
-        bundle_url: "/auth/static/main.js"
+        graphql_url: "/bilby/graphql",
+        bundle_url: "/bilby/static/main.js"
     },
 };
 
