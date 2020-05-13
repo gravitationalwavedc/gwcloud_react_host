@@ -29,7 +29,7 @@ spec:
       service: gwcloud-job-server
       port: 8001
     - name: gwcloud-bilby
-      service: gwcloud-bilby
+      service: gwcloud-bilby-nginx
       port: 8000
   routes:
     - path: ~* ^(/auth/static/.*|/auth/graphql|/auth/ligo/|/Shibboleth.sso.*)
