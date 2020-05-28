@@ -42,6 +42,7 @@ function Layout(props) {
 export default createFragmentContainer(Layout, {
     gwclouduser: graphql`
         fragment Layout_gwclouduser on UserDetails {
+          userId
           username
           firstName
           lastName
