@@ -1,15 +1,15 @@
 rem Clone Repos
-git clone https://github.com/gravitationalwavedc/gwcloud_react_host.git
-git clone https://github.com/gravitationalwavedc/gwcloud_auth.git
+git clone https://phab.gw-cloud.org/source/gwcloud-react-host.git
+git clone https://phab.gw-cloud.org/source/gwcloud-auth.git
 
 rem Pulling latest code
-cd gwcloud_react_host
+cd gwcloud-react-host
 git pull
-cd ..\gwcloud_auth
+cd ..\gwcloud-auth
 git pull
 
 rem Set up npm for the react host
-cd ..\gwcloud_react_host\src
+cd ..\gwcloud-react-host\src
 set /p nodeversion=<.nvmrc
 nvm install %nodeversion%
 nvm use %nodeversion%
@@ -17,7 +17,7 @@ timeout /t 2 /nobreak > nul
 cmd /C npm install
 
 rem Set up npm for the auth module
-cd ..\..\gwcloud_auth\src\react
+cd ..\..\gwcloud-auth\src\react
 set /p nodeversion=<.nvmrc
 nvm install %nodeversion%
 nvm use %nodeversion%

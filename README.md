@@ -50,7 +50,7 @@ Make sure that you have the required dependencies installed:-
 * Python 3.8 + virtualenv
 * Node Version Manager https://github.com/nvm-sh/nvm
 
-Download the init script from here https://github.com/gravitationalwavedc/gwcloud_react_host/blob/master/utils/init_gwcloud_dev_environment.sh
+Download the init script from here https://phab.gw-cloud.org/source/gwcloud-react-host/browse/master/utils/init_gwcloud_dev_environment.sh 
 
 Move the init script to the directory where you want the repository folders to be stored, eg `~/Documents/Projects/`
 
@@ -73,7 +73,7 @@ Make sure that you have the required dependencies installed:-
 
 NB: Make sure you can open a terminal and run `git`, `python3.8`, `pip3` and `nvm`
 
-Download the init script from here https://github.com/gravitationalwavedc/gwcloud_react_host/blob/master/utils/init_gwcloud_dev_environment.bat
+Download the init script from here https://phab.gw-cloud.org/source/gwcloud-react-host/browse/master/utils/init_gwcloud_dev_environment.bat 
 
 Move the init script to the root directory where you want the repository folders to be stored, eg `Documents\Projects\`
 

@@ -1,26 +1,27 @@
 #!/bin/bash
 
 echo Clone Repos
-git clone https://phab.gw-cloud.org/source/gwcloud_react_host.git
-git clone https://phab.gw-cloud.org/source/gwcloud_auth.git
+
+git clone https://phab.gw-cloud.org/source/gwcloud-react-host.git
+git clone https://phab.gw-cloud.org/source/gwcloud-auth.git
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 echo Pulling latest code
-cd gwcloud_react_host
+cd gwcloud-react-host
 git pull
-cd ../gwcloud_auth
+cd ../gwcloud-auth
 git pull
 
 echo Set up npm for the react host
-cd ../gwcloud_react_host/src
+cd ../gwcloud-react-host/src
 nvm install $(cat .nvmrc)
 nvm use $(cat .nvmrc)
 npm install
 
 echo Set up npm for the auth module
-cd ../../gwcloud_auth/src/react
+cd ../../gwcloud-auth/src/react
 nvm install $(cat .nvmrc)
 nvm use $(cat .nvmrc)
 npm install
