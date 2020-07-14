@@ -36,4 +36,3 @@ venv/bin/python development-manage.py migrate
 
 echo Creating auth superuser \(CTRL+C if you\'ve already created a superuser\)
 venv/bin/python development-manage.py createsuperuser
-

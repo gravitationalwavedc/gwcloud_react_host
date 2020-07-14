@@ -4,16 +4,16 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Recreate the graphql schema
-cd gwcloud_auth/src
+cd gwcloud-auth/src
 venv/bin/python development-manage.py graphql_schema
 
 
-cd ../../gwcloud_react_host/src
+cd ../../gwcloud-react-host/src
 nvm use
 npm run relay
 npm run start &
 
-cd ../../gwcloud_auth/src/react
+cd ../../gwcloud-auth/src/react
 nvm use
 npm run relay
 npm run start &
