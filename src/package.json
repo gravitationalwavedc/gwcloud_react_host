@@ -43,6 +43,7 @@
   "dependencies": {
     "@restart/context": "latest",
     "babel-plugin-relay": "^9.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "farce": "^0.2.8",
     "found": "^0.4.9",
     "found-relay": "^0.6.0",
