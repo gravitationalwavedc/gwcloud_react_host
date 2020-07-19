@@ -1,4 +1,3 @@
-// Set the harnessApi
 import React from "react";
 import {expect} from "@jest/globals";
 import TestRenderer from 'react-test-renderer';
