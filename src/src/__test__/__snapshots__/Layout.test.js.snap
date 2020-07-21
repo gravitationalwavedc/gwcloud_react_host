@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout renders login if user is not set 1`] = `
+<div>
+  <div
+    className="ui top fixed menu"
+  >
+    <a
+      className="header item"
+      onClick={[Function]}
+    >
+      GW Cloud
+    </a>
+    <div
+      className="item"
+      onClick={[Function]}
+    >
+      <a
+        activeClassName="selected"
+        exact={true}
+        to="/"
+      >
+        Home
+      </a>
+    </div>
+    <div
+      className="right menu"
+    >
+      <div
+        className="item"
+        onClick={[Function]}
+      >
+        <a
+          activeClassName="selected"
+          exact={true}
+          to="/auth/"
+        >
+          Login
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ui one column grid"
+  >
+    <div
+      className="column"
+    />
+  </div>
+</div>
+`;
+
+exports[`Layout renders login if user is set 1`] = `
+<div>
+  <div
+    className="ui top fixed menu"
+  >
+    <a
+      className="header item"
+      onClick={[Function]}
+    >
+      GW Cloud
+    </a>
+    <div
+      className="item"
+      onClick={[Function]}
+    >
+      <a
+        activeClassName="selected"
+        exact={true}
+        to="/"
+      >
+        Home
+      </a>
+    </div>
+    <div
+      className="right menu"
+    >
+      <div
+        aria-expanded={false}
+        className="ui floating item dropdown"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        role="listbox"
+        tabIndex={0}
+      >
+        <div
+          aria-atomic={true}
+          aria-live="polite"
+          className="text"
+          role="alert"
+        >
+          &lt;mock-value-for-field-"firstName"&gt; &lt;mock-value-for-field-"lastName"&gt;
+        </div>
+        <i
+          aria-hidden="true"
+          className="dropdown icon"
+          onClick={[Function]}
+        />
+        <div
+          className="menu transition"
+        >
+          <a
+            className="item"
+            onClick={[Function]}
+          >
+            Logout
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ui one column grid"
+  >
+    <div
+      className="column"
+    />
+  </div>
+</div>
+`;

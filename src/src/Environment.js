@@ -1,7 +1,6 @@
-import {commitMutation, Environment, RecordSource, Store,} from 'relay-runtime';
+import {Environment, RecordSource, Store,} from 'relay-runtime';
 import Modules from "./Modules";
 import {IS_DEV} from "./Utils";
-import {graphql} from "graphql";
 import HarnessApi from "./HarnessApi";
 import {RelayNetworkLayer, urlMiddleware} from "react-relay-network-modern";
 import authMiddleware from "./AuthMiddleware";

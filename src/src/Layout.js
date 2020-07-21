@@ -1,6 +1,6 @@
 import {Button, Dropdown, Grid, Menu} from "semantic-ui-react";
 import React from "react";
-import Link from 'found/lib/Link';
+import {Link} from 'found';
 import {logout} from './Environment';
 import {createFragmentContainer} from "react-relay"
 import HarnessApi from "./HarnessApi";
