@@ -24,7 +24,7 @@ test('Layout renders login if user is not set', () => {
             variables={{}}
             render={({error, props}) => {
                 if (props) {
-                    return <Layout gwclouduser={null}/>;
+                    return <Layout {...props} match={{location: {pathname: '/'}}}/>;
                 } else if (error) {
                     return error.message;
                 }
@@ -66,7 +66,7 @@ test('Layout renders login if user is set', () => {
             variables={{}}
             render={({error, props}) => {
                 if (props) {
-                    return <Layout gwclouduser={props.gwclouduser}/>;
+                  return <Layout {...props} match={{location: {pathname: '/'}}}/>;
                 } else if (error) {
                     return error.message;
                 }

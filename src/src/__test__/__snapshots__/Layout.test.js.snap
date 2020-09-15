@@ -1,124 +1,97 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Layout renders login if user is not set 1`] = `
-<div>
-  <div
-    className="ui top fixed menu"
-  >
-    <a
-      className="header item"
-      onClick={[Function]}
+Array [
+  <header>
+    <nav
+      className="navbar navbar-expand navbar-light fixed-top"
     >
-      GW Cloud
-    </a>
-    <div
-      className="item"
-      onClick={[Function]}
-    >
-      <a
-        activeClassName="selected"
-        exact={true}
-        to="/"
-      >
-        Home
-      </a>
-    </div>
-    <div
-      className="right menu"
-    >
-      <div
-        className="item"
-        onClick={[Function]}
+      <span
+        className="mr-auto navbar-brand"
       >
         <a
-          activeClassName="selected"
           exact={true}
-          to="/auth/"
+          to="/"
         >
-          Login
+          GW Cloud
+        </a>
+      </span>
+      <div
+        className="navbar-nav"
+        onKeyDown={[Function]}
+      >
+        <span
+          className="justify-content-end navbar-text"
+        >
+          &lt;mock-value-for-field-"firstName"&gt; &lt;mock-value-for-field-"lastName"&gt;
+        </span>
+        <a
+          className="nav-link"
+          data-rb-event-key={null}
+          href="#"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+        >
+          Logout
         </a>
       </div>
-    </div>
-  </div>
-  <div
-    className="ui one column grid"
-  >
-    <div
-      className="column"
-    />
-  </div>
-</div>
+    </nav>
+  </header>,
+  <main
+    style={
+      Object {
+        "paddingTop": "56px",
+      }
+    }
+  />,
+]
 `;
 
 exports[`Layout renders login if user is set 1`] = `
-<div>
-  <div
-    className="ui top fixed menu"
-  >
-    <a
-      className="header item"
-      onClick={[Function]}
+Array [
+  <header>
+    <nav
+      className="navbar navbar-expand navbar-light fixed-top"
     >
-      GW Cloud
-    </a>
-    <div
-      className="item"
-      onClick={[Function]}
-    >
-      <a
-        activeClassName="selected"
-        exact={true}
-        to="/"
+      <span
+        className="mr-auto navbar-brand"
       >
-        Home
-      </a>
-    </div>
-    <div
-      className="right menu"
-    >
+        <a
+          exact={true}
+          to="/"
+        >
+          GW Cloud
+        </a>
+      </span>
       <div
-        aria-expanded={false}
-        className="ui floating item dropdown"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onMouseDown={[Function]}
-        role="listbox"
-        tabIndex={0}
+        className="navbar-nav"
+        onKeyDown={[Function]}
       >
-        <div
-          aria-atomic={true}
-          aria-live="polite"
-          className="text"
-          role="alert"
+        <span
+          className="justify-content-end navbar-text"
         >
           &lt;mock-value-for-field-"firstName"&gt; &lt;mock-value-for-field-"lastName"&gt;
-        </div>
-        <i
-          aria-hidden="true"
-          className="dropdown icon"
+        </span>
+        <a
+          className="nav-link"
+          data-rb-event-key={null}
+          href="#"
           onClick={[Function]}
-        />
-        <div
-          className="menu transition"
+          onKeyDown={[Function]}
+          role="button"
         >
-          <a
-            className="item"
-            onClick={[Function]}
-          >
-            Logout
-          </a>
-        </div>
+          Logout
+        </a>
       </div>
-    </div>
-  </div>
-  <div
-    className="ui one column grid"
-  >
-    <div
-      className="column"
-    />
-  </div>
-</div>
+    </nav>
+  </header>,
+  <main
+    style={
+      Object {
+        "paddingTop": "56px",
+      }
+    }
+  />,
+]
 `;

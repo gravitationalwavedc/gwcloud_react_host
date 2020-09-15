@@ -49,10 +49,9 @@ class GWCloudApp extends React.Component {
                     render={({Component, props, retry, error}) => {
                         if (!Component || !props)
                             return <div>Loading...</div>;
-
                         HarnessApi.retryHarnessUserDetails = retry;
 
-                        return <Component gwclouduser={props.gwclouduser}/>
+                        return <Component {...props} />
                     }}
                     on
                 >

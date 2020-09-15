@@ -22,7 +22,6 @@
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
     "@jest/globals": "^26.1.0",
-    "@testing-library/react": "^10.4.6",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.4.2",
     "html-loader": "^0.5.5",
@@ -42,25 +41,28 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
+    "@popperjs/core": "^2.4.4",
     "@restart/context": "latest",
+    "@testing-library/react": "^11.0.4",
     "babel-plugin-relay": "^9.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "bootstrap": "^4.5.2",
     "farce": "^0.2.8",
     "found": "^0.4.9",
     "found-relay": "^0.6.0",
     "graphql": "^14.6.0",
     "jest": "^26.1.0",
     "jest-junit": "^11.0.1",
+    "jquery": "^3.5.1",
     "linq": "^3.2.1",
     "prop-types": "latest",
+    "react-bootstrap": "^1.3.0",
     "react-relay": "^9.0.0",
     "react-relay-network-modern": "^4.4.1",
     "react-static-container": "latest",
     "relay-compiler": "^9.0.0",
     "relay-runtime": "^9.0.0",
     "relay-test-utils": "^10.0.0",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.2",
     "url-loader": "^3.0.0"
   }
 }

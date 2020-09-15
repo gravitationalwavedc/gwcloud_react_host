@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`menu displays correctly when logged in 1`] = `
+<nav
+  className="navbar navbar-expand navbar-light fixed-top"
+>
+  <span
+    className="mr-auto navbar-brand"
+  >
+    <a
+      exact={true}
+      to="/"
+    >
+      GW Cloud
+    </a>
+  </span>
+  <div
+    className="navbar-nav"
+    onKeyDown={[Function]}
+  >
+    <span
+      className="justify-content-end navbar-text"
+    >
+      Buffy Summers
+    </span>
+    <a
+      className="nav-link"
+      data-rb-event-key={null}
+      href="#"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+    >
+      Logout
+    </a>
+  </div>
+</nav>
+`;
+
+exports[`menu displays correctly when logged out 1`] = `
+<nav
+  className="navbar navbar-expand navbar-light fixed-top"
+>
+  <span
+    className="mr-auto navbar-brand"
+  >
+    <a
+      exact={true}
+      to="/"
+    >
+      GW Cloud
+    </a>
+  </span>
+  <div
+    className="navbar-nav"
+    onKeyDown={[Function]}
+  >
+    <a
+      exact={true}
+      to="/auth/"
+    >
+      Login
+    </a>
+  </div>
+</nav>
+`;
