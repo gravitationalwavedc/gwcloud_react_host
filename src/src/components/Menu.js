@@ -3,13 +3,20 @@ import {logout} from '../Environment';
 import {Link} from 'found';
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import { HiOutlineUserCircle, HiOutlineLogout } from "react-icons/hi";
+import GWCloudLogo from "../assets/GWCloud-logo-primary200.png";
+
+const iconStyle = {
+  height: '20px',
+  margin: '-2px 2px 0 0'
+};
 
 const subMenu = (name) => {
   if(name){
     return (
       <Nav>
-        <Navbar.Text className="justify-content-end">{name}</Navbar.Text>
-        <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
+        <Navbar.Text className="justify-content-end mr-3"><HiOutlineUserCircle style={iconStyle}/> {name}</Navbar.Text>
+        <Nav.Link onClick={() => logout()}><HiOutlineLogout style={iconStyle}/> Logout</Nav.Link>
       </Nav>
     );
   };
@@ -26,7 +33,7 @@ const Menu = ({name}) => {
   return (
     <Navbar fixed="top">
       <Navbar.Brand className="mr-auto">
-        <Link to="/" exact>GW Cloud</Link>
+        <Link to="/" exact style={{color: "#55BBFB"}}><img src={GWCloudLogo} style={iconStyle}/>GWCloud</Link>
       </Navbar.Brand>
       {SubMenu}
     </Navbar>
