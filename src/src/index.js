@@ -3,7 +3,8 @@ import React from "react";
 import ReactDOM from "react-dom"
 
 // Assets
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import "./theme.scss";
 import GWCloudApp from "./App";
 
 const container = document.getElementById('gwcloud_container');

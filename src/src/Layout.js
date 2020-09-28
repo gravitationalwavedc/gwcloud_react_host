@@ -17,12 +17,13 @@ const Layout = ({gwclouduser, children, match}) => {
     const user = setUser(gwclouduser);
     const name = user ? `${user.firstName} ${user.lastName}` : null;
     const showMenu= !noMenuURLs.includes(match.location.pathname);
+
     return (
       <React.Fragment>
         <header>
           {showMenu && <Menu name={name}/>}
         </header>
-        <main style={{paddingTop: '56px'}}>
+        <main className="h-100" style={showMenu ? {marginTop: "56px"} : null}>
           {children}
         </main>
       </React.Fragment>

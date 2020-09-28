@@ -1,0 +1,11 @@
+$body-color: #191F24;
+$body-bg: #EFF3f6;
+
+$enable-gradients: true;
+$enable-shadows: true;
+
+$theme-colors: (
+  "primary":  #0477BF
+);
+
+@import "../node_modules/bootstrap/scss/bootstrap";
