@@ -18,16 +18,6 @@ const Layout = ({gwclouduser, children, match}) => {
     const name = user ? `${user.firstName} ${user.lastName}` : null;
     const showMenu= !noMenuURLs.includes(match.location.pathname);
 
-    // If the user is not logged in, redirect them to auth
-    // NB. Wrapped in setTimeout to avoid setState in render exception
-    if (!user) {
-        setTimeout(() => match.router.replace("/auth/"), 0);
-    } else {
-        // Otherwise if the user is logged in, redirect them to bilby
-        setTimeout(() => match.router.replace("/bilby/"), 0);
-    }
-
-
     return (
       <React.Fragment>
         <header>

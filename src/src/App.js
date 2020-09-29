@@ -1,6 +1,6 @@
 import React from "react";
 import {UpdatableResolver} from "./UpdatableResolver";
-import {Route} from 'found'
+import {Route, Redirect} from 'found'
 import Layout from "./Layout";
 import RemoteModule from "./RemoteModule";
 import NotFound from "./NotFound";
@@ -28,7 +28,8 @@ class GWCloudApp extends React.Component {
 
         modules = [
             ...modules,
-            (<Route path="*" key="notfound" Component={NotFound}/>)
+            (<Route path="*" key="notfound" Component={NotFound}/>),
+            (<Redirect key="redirectToBilby" from="/" to="/bilby/" status={301} />)
         ];
 
         return (
@@ -46,7 +47,8 @@ class GWCloudApp extends React.Component {
                     `}
                     render={({Component, props, retry, error}) => {
                         if (!Component || !props)
-                            return <div>Loading...</div>;
+                            return <div/>;
+
                         HarnessApi.retryHarnessUserDetails = retry;
 
                         return <Component {...props} />
