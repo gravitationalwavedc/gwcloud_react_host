@@ -1,9 +1,8 @@
 import React from "react";
-import {redirect, UpdatableResolver} from "./UpdatableResolver";
+import {UpdatableResolver} from "./UpdatableResolver";
 import {Route} from 'found'
 import Layout from "./Layout";
 import RemoteModule from "./RemoteModule";
-import Home from "./Home";
 import NotFound from "./NotFound";
 import Modules from './Modules'
 import * as Enumerable from "linq";
@@ -28,7 +27,6 @@ class GWCloudApp extends React.Component {
         )).toArray();
 
         modules = [
-            (<Route Component={Home} key="home"/>),
             ...modules,
             (<Route path="*" key="notfound" Component={NotFound}/>)
         ];

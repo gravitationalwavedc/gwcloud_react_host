@@ -79,7 +79,7 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: "./src/index.html",
             filename: "./index.html",
-	    hash: true,
+	        hash: true,
         }),
         new webpack.DefinePlugin({
             'process.env': {
