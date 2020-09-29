@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom"
 
 // Assets
-import ".assets/theme.scss";
+import "./assets/theme.scss";
 import GWCloudApp from "./App";
 
 const container = document.getElementById('gwcloud_container');
