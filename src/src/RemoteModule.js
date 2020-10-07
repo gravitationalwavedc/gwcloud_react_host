@@ -1,6 +1,7 @@
 import React from "react";
 import {updateRoutes} from "./UpdatableResolver";
 import HarnessApi from "./HarnessApi";
+import Loading from "./components/Loading";
 
 const module_map = {};
 
@@ -65,7 +66,7 @@ class RemoteModule extends React.Component {
 
     render() {
         return (
-            <div>Loading...</div>
+          <Loading/>
         );
     }
 }
