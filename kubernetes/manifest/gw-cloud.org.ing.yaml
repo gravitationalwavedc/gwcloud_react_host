@@ -1,0 +1,23 @@
+---
+# Ingress - Configuration documentation: https://docs.nginx.com/nginx-ingress-controller/configuration/virtualserver-and-virtualserverroute-resources/
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: gw-cloud-org-ing
+  namespace: gwcloud
+spec:
+  host: gw-cloud.org
+  upstreams:
+    - name: gwcloud-auth
+      service: gwcloud-auth
+      port: 8000
+  routes:
+    - path: ~* ^(/auth/ligo/|/Shibboleth.sso.*)
+      action:
+        pass: gwcloud-auth
+    - path: / 
+      action:
+        redirect:
+          url: https://gwcloud.org.au${request_uri}
+          code: 302
+---

@@ -1,5 +1,6 @@
 resources:
   - ns.yaml
-  - ing.yaml
+  - gwcloud.org.au.ing.yaml
+  - gw-cloud.org.ing.yaml
   - gwcloud_react_host_static.yaml
   - gwcloud_react_host_static_service_cp.yaml

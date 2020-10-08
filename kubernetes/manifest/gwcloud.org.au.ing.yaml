@@ -1,20 +1,12 @@
 ---
-# Ingress
+# Ingress - Configuration documentation: https://docs.nginx.com/nginx-ingress-controller/configuration/virtualserver-and-virtualserverroute-resources/
 apiVersion: k8s.nginx.org/v1
 kind: VirtualServer
 metadata:
-  name: gwc-ing
+  name: gwcloud-org-au-ing
   namespace: gwcloud
-  #annotations:
-  # nginx.ingress.kubernetes.io/use-regex: "true"
-  # kubernetes.io/ingress.class: "nginx"
-  # nginx.ingress.kubernetes.io/rewrite-target: /$1
-  #annotations:
-  #  kubernetes.io/ingress.class: nginx
-  #  nginx.ingress.kubernetes.io/proxy-read-timeout: 3600
-  #  nginx.ingress.kubernetes.io/proxy-send-timeout: 3600
 spec:
-  host: gw-cloud.org
+  host: gwcloud.org.au
   upstreams:
     - name: gwcloud-auth
       service: gwcloud-auth
@@ -32,7 +24,12 @@ spec:
       service: gwcloud-bilby-nginx
       port: 8000
   routes:
-    - path: ~* ^(/auth/static/.*|/auth/graphql|/auth/ligo/|/Shibboleth.sso.*)
+    - path: ~* ^(/auth/ligo/|/Shibboleth.sso.*)
+      action:
+        redirect:
+          url: https://gw-cloud.org${request_uri}
+          code: 302
+    - path: ~* ^(/auth/static/.*|/auth/graphql)
       action:
         pass: gwcloud-auth
     - path: ~* ^(/bilby/static/.*|/bilby/graphql)
