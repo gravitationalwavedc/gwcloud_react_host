@@ -12,7 +12,7 @@ spec:
       service: gwcloud-auth
       port: 8000
   routes:
-    - path: ~* ^(/auth/ligo/|/Shibboleth.sso.*)
+    - path: ~* ^(/Shibboleth.sso.*)
       action:
         pass: gwcloud-auth
     - path: / 

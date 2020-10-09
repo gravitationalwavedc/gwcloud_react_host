@@ -24,12 +24,12 @@ spec:
       service: gwcloud-bilby-nginx
       port: 8000
   routes:
-    - path: ~* ^(/auth/ligo/|/Shibboleth.sso.*)
+    - path: ~* ^(/Shibboleth.sso.*)
       action:
         redirect:
           url: https://gw-cloud.org${request_uri}
           code: 302
-    - path: ~* ^(/auth/static/.*|/auth/graphql)
+    - path: ~* ^(/auth/static/.*|/auth/graphql|/auth/ligo/)
       action:
         pass: gwcloud-auth
     - path: ~* ^(/bilby/static/.*|/bilby/graphql)
