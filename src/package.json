@@ -47,6 +47,9 @@
     "babel-plugin-relay": "^9.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "bootstrap": "^4.5.2",
+    "eslint": "^7.11.0",
+    "eslint-plugin-jest": "^24.1.0",
+    "eslint-plugin-react": "^7.21.4",
     "farce": "^0.2.8",
     "found": "^0.4.9",
     "found-relay": "^0.6.0",
@@ -65,6 +68,8 @@
     "relay-compiler": "^9.0.0",
     "relay-runtime": "^9.0.0",
     "relay-test-utils": "^10.0.0",
+    "stylelint": "^13.7.2",
+    "stylelint-scss": "^3.18.0",
     "url-loader": "^3.0.0"
   },
   "jest": {

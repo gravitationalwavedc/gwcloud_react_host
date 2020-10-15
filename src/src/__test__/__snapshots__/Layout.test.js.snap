@@ -10,12 +10,8 @@ Array [
         className="mr-auto navbar-brand"
       >
         <a
+          className="navbar-brand-link"
           exact={true}
-          style={
-            Object {
-              "color": "#55BBFB",
-            }
-          }
           to="/"
         >
           <img
@@ -120,12 +116,8 @@ Array [
         className="mr-auto navbar-brand"
       >
         <a
+          className="navbar-brand-link"
           exact={true}
-          style={
-            Object {
-              "color": "#55BBFB",
-            }
-          }
           to="/"
         >
           <img
