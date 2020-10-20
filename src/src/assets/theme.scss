@@ -87,7 +87,8 @@ p.text-danger.small {
 // Inputs
 .form-group {
     .form-control, 
-    .custom-select {
+    .custom-select,
+    .gw-select__control {
         border: none;
         box-shadow: $shadow-inner;
         background-color: $gray-200;
