@@ -1,5 +1,5 @@
 import React from "react";
-import {expect} from "@jest/globals";
+import {expect, test} from "@jest/globals";
 import TestRenderer from 'react-test-renderer';
 import NotFound from "../NotFound";
 

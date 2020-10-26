@@ -1,6 +1,6 @@
 import {Environment, RecordSource, Store,} from 'relay-runtime';
-import Modules from "./Modules";
-import {IS_DEV} from "./Utils";
+import modules from "./modules";
+import {IS_DEV} from "./utils";
 import HarnessApi from "./HarnessApi";
 import {RelayNetworkLayer, urlMiddleware} from "react-relay-network-modern";
 import authMiddleware from "./AuthMiddleware";
@@ -25,7 +25,7 @@ function logout(path) {
 }
 
 function requestRefreshToken(name) {
-    return fetch(IS_DEV ? Modules['auth'].dev_graphql_url : Modules['auth'].graphql_url, {
+    return fetch(IS_DEV ? modules()['auth'].dev_graphql_url : modules()['auth'].graphql_url, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -68,7 +68,7 @@ function getEnvironment(name) {
     // Create a network layer from the fetch function
     const network = new RelayNetworkLayer([
         urlMiddleware({
-            url: () => IS_DEV ? Modules[name].dev_graphql_url : Modules[name].graphql_url
+            url: () => IS_DEV ? modules()[name].dev_graphql_url : modules()[name].graphql_url
         }),
         authMiddleware({
             token: () => localStorage.authToken,

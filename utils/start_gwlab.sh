@@ -11,7 +11,7 @@ venv/bin/python development-manage.py graphql_schema
 cd ../../gwcloud-react-host/src
 nvm use
 npm run relay
-npm run start_gwcloud &
+npm run start_gwlab &
 
 cd ../../gwcloud-auth/src/react
 nvm use

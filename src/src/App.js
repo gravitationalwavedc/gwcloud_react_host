@@ -4,16 +4,16 @@ import {Route, Redirect} from 'found'
 import Layout from "./Layout";
 import RemoteModule from "./RemoteModule";
 import NotFound from "./NotFound";
-import Modules from './Modules'
+import modules from './modules'
 import * as Enumerable from "linq";
-import {IS_DEV} from "./Utils";
+import {IS_DEV, isGwLab} from "./utils";
 import {graphql} from "react-relay";
 import HarnessApi from "./HarnessApi";
 import {getEnvironment} from "./Environment";
 
 class GWCloudApp extends React.Component {
     render() {
-        let modules = Enumerable.from(Modules).select((e, i) => (
+        let _modules = Enumerable.from(modules()).select((e, i) => (
             <Route key={i}
                    path={e.key + "*"}
                    Component={props => (
@@ -26,11 +26,22 @@ class GWCloudApp extends React.Component {
             />
         )).toArray();
 
-        modules = [
-            ...modules,
-            (<Route path="*" key="notfound" Component={NotFound}/>),
-            (<Redirect key="redirectToBilby" from="/" to="/bilby/" status={301} />)
+        _modules = [
+            ..._modules,
+            (<Route path="*" key="notfound" Component={NotFound}/>)
         ];
+
+        if (isGwLab()) {
+            _modules = [
+                ..._modules,
+                (<Redirect key="redirectToViterbi" from="/" to="/viterbi/" status={302} />)
+            ]
+        } else {
+            _modules = [
+                ..._modules,
+                (<Redirect key="redirectToBilby" from="/" to="/bilby/" status={302} />)
+            ]
+        }
 
         return (
             <UpdatableResolver routes={
@@ -56,7 +67,7 @@ class GWCloudApp extends React.Component {
                     on
                 >
                     {
-                        modules
+                        _modules
                     }
 
                 </Route>

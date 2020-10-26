@@ -1,0 +1,41 @@
+import {isGwLab} from "./utils";
+
+function modules() {
+    const _commonModules = {
+        auth: {
+            dev_graphql_url: "http://localhost:8000/graphql",
+            dev_bundle_url: "http://localhost:3001/main.js",
+
+            graphql_url: "/auth/graphql",
+            bundle_url: "/auth/static/main.js"
+        }
+    };
+
+    if (isGwLab()) {
+        // GWLab modules
+        return {
+            ..._commonModules,
+            viterbi: {
+                dev_graphql_url: "http://localhost:8002/graphql",
+                dev_bundle_url: "http://localhost:3003/main.js",
+
+                graphql_url: "/viterbi/graphql",
+                bundle_url: "/viterbi/static/main.js"
+            }
+        }
+    } else {
+        // GWCloud modules
+        return {
+            ..._commonModules,
+            bilby: {
+                dev_graphql_url: "http://localhost:8001/graphql",
+                dev_bundle_url: "http://localhost:3002/main.js",
+
+                graphql_url: "/bilby/graphql",
+                bundle_url: "/bilby/static/main.js"
+            }
+        }
+    }
+}
+
+export default modules;

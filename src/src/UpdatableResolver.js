@@ -10,8 +10,8 @@ let updateRoutes = () => {
 };
 
 class UpdatableResolver extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             router: null,

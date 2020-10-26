@@ -9,21 +9,22 @@ import React, {
     useImperativeHandle,
     useLayoutEffect,
     useDebugValue
- } from "react";
- import {getEnvironment} from "./Environment";
- import readContext from "react-relay/lib/readContext"
- import getContext from "react-relay/lib/ReactRelayContext"
-  
- function setAuthTokens(token, refreshToken) {
+} from "react";
+import {getEnvironment} from "./Environment";
+import readContext from "react-relay/lib/readContext"
+import getContext from "react-relay/lib/ReactRelayContext"
+import {isGwLab} from "./utils";
+
+function setAuthTokens(token, refreshToken) {
     localStorage.authToken = token;
     localStorage.authRefreshToken = refreshToken;
- }
+}
 
- function hasAuthToken() {
+function hasAuthToken() {
     return !(localStorage.getItem("authToken") === '' || localStorage.getItem("authToken") === null);
- }
-  
- const HarnessApi = {
+}
+
+const HarnessApi = {
     getEnvironment: getEnvironment,
     setAuthTokens: setAuthTokens,
     hasAuthToken: hasAuthToken,
@@ -45,9 +46,11 @@ import React, {
         useImperativeHandle: useImperativeHandle,
         useLayoutEffect: useLayoutEffect,
         useDebugValue: useDebugValue
-    }
- };
-  
- export default HarnessApi;
+    },
+    // Returns true if the site is currently rendering GWLab, otherwise false
+    isGwLab: isGwLab
+};
+
+export default HarnessApi;
  
  
