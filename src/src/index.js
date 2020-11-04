@@ -1,10 +1,10 @@
 // Get the container to mount the react application in
-import React from "react";
-import ReactDOM from "react-dom"
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 // Assets
-import "./assets/theme.scss";
-import GWCloudApp from "./App";
+import './assets/scss/theme.scss';
+import GWCloudApp from './App';
 
 const container = document.getElementById('gwcloud_container');
 

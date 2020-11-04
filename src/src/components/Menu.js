@@ -4,7 +4,7 @@ import {Link} from 'found';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { HiOutlineUserCircle, HiOutlineLogout } from 'react-icons/hi';
-import GWCloudLogo from '../assets/GWCloud-logo-primary200.png';
+import GWCloudLogo from '../assets/images/GWCloud-logo-primary200.png';
 
 const iconStyle = {
     height: '20px',
