@@ -2,8 +2,8 @@
 
 echo Clone Repos
 
-git clone https://phab.gw-cloud.org/source/gwcloud-react-host.git
-git clone https://phab.gw-cloud.org/source/gwcloud-auth.git
+git clone https://phab.adacs.org.au/source/gwcloud-react-host.git
+git clone https://phab.adacs.org.au/source/gwcloud-auth.git
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
