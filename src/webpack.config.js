@@ -1,5 +1,7 @@
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const { ModuleFederationPlugin } = require("webpack").container;
+const deps = require("./package.json").dependencies;
 
 module.exports = {
     module: {
@@ -66,7 +68,7 @@ module.exports = {
     output: {
         publicPath: "/",
         globalObject: "this",
-	path: "/static/"
+	    path: "/static/"
     },
     // Server Configuration options
     devServer: {
@@ -76,6 +78,13 @@ module.exports = {
         historyApiFallback: true
     },
     plugins: [
+        new ModuleFederationPlugin({
+            name: "react-host",
+            remotes: {},
+            shared: {
+                ...deps
+            }
+        }),
         new HtmlWebPackPlugin({
             template: "./src/index.html",
             filename: "./index.html",

@@ -5,6 +5,18 @@ import Loading from "./components/Loading";
 
 const module_map = {};
 
+
+// Taken from https://stackoverflow.com/a/39008859
+function injectScript(src) {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.addEventListener('load', resolve);
+        script.addEventListener('error', e => reject(e.error));
+        document.head.appendChild(script);
+    });
+}
+
 class RemoteModule extends React.Component {
     constructor(props) {
         super(props);
@@ -16,41 +28,39 @@ class RemoteModule extends React.Component {
             // Don't do anything, we've been remounted during the loading of the specified module
             return;
 
+        // If the module is already fetched, it's safe to load the module
         if (this.props._module_url in module_map)
             this.loadModule(module_map[this.props._module_url]);
         else {
-            // Make this module as loading
+            // Mark this module as loading
             module_map[this.props._module_url] = "loading";
 
-            const p = new Promise((resolve, reject) => {
-                const request = new XMLHttpRequest();
+            injectScript(this.props._module_url)
+                .then(() => {
+                    // This following block of code is straight magic. For "documentation" if you could call it that,
+                    // have a read of https://webpack.js.org/concepts/module-federation/#dynamic-remote-containers
 
-                request.onload = () => {
-                    if (request.status >= 200 && request.status < 400) {
-                        const src = request.responseText;
-                        const module = window.eval(src);
+                    // Initializes the share scope.
+                    // This fills it with known provided modules from this build and all remotes
+                    __webpack_init_sharing__("default");
+                    const container = window[this.props._path];
 
-                        // Remove window ref if one exists
-                        if (window.RemoteModule)
-                            delete window.RemoteModule;
+                    // Initialize the container, it may provide shared modules
+                    container.init(__webpack_share_scopes__.default);
 
-                        // Resolve the promise
-                        return resolve(module);
-                    } else {
-                        return reject();
-                    }
-                };
+                    // Find the index module which has remote module exports
+                    const p = container.get("index");
 
-                request.open('GET', this.props._module_url);
-                request.send();
-            });
+                    // Wait for the promise to resolve
+                    p.then(module => {
+                        // Get the index module and store it in the module map
+                        module_map[this.props._module_url] = module()
 
-            p.then(m => {
-                module_map[this.props._module_url] = m;
-
-                this.loadModule(m);
-            }).catch(e => {
-                console.log("Error loading external component", e)
+                        // Now prepare and load the module
+                        this.loadModule(module_map[this.props._module_url])
+                    })
+                }).catch(error => {
+                console.error(error);
             });
         }
     }
@@ -66,7 +76,7 @@ class RemoteModule extends React.Component {
 
     render() {
         return (
-          <Loading/>
+            <Loading/>
         );
     }
 }

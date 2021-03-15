@@ -2,7 +2,8 @@ import {Environment, RecordSource, Store,} from 'relay-runtime';
 import modules from "./modules";
 import {IS_DEV} from "./utils";
 import HarnessApi from "./HarnessApi";
-import {RelayNetworkLayer, urlMiddleware} from "react-relay-network-modern";
+import 'regenerator-runtime/runtime';
+import {RelayNetworkLayer, urlMiddleware} from "react-relay-network-modern/node8";
 import authMiddleware from "./AuthMiddleware";
 import {router} from './router/createBaseRouter'
 

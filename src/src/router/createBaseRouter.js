@@ -6,10 +6,10 @@ import StaticContainer from 'react-static-container';
 import warning from 'warning';
 import mapContextToProps from '@restart/context/mapContextToProps';
 
-import createRender from 'found/lib/createRender';
-import RouterContext from 'found/lib/RouterContext';
-import createStoreRouterObject from 'found/lib/utils/createStoreRouterObject';
-import resolveRenderArgs from 'found/lib/utils/resolveRenderArgs';
+import createRender from 'found/createRender';
+import RouterContext from 'found/RouterContext';
+import createStoreRouterObject from 'found/createStoreRouterObject';
+import resolveRenderArgs from 'found/resolveRenderArgs';
 
 const __DEV__ = false;
 let router = () => {}; 

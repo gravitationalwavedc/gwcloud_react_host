@@ -5,7 +5,7 @@ import {
     getRouteMatches,
     getRouteValues,
     isResolved,
-} from 'found/lib/ResolverUtils';
+} from 'found/ResolverUtils';
 import isPromise from 'is-promise';
 import isEqual from 'lodash/isEqual';
 import React from 'react';
@@ -14,9 +14,6 @@ import QuerySubscription from "./QuerySubscription";
 import renderElement from "./renderElement";
 import ReadyStateRenderer from "./ReadyStateRenderer";
 
-// import QuerySubscription from './QuerySubscription';
-// import ReadyStateRenderer from './ReadyStateRenderer';
-// import renderElement from './renderElement';
 
 export default class Resolver {
     constructor() {

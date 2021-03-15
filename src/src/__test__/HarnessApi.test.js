@@ -21,22 +21,6 @@ describe('HarnessAPI', () => {
         expect(HarnessApi).toHaveProperty("setAuthTokens");
         expect(HarnessApi).toHaveProperty("retryHarnessUserDetails");
         expect(HarnessApi).toMatchObject({currentUser: null});
-        expect(HarnessApi).toMatchObject({relayContext: getContext});
-        expect(HarnessApi).toHaveProperty("readContext");
-        expect(HarnessApi).toMatchObject({
-            reactHooks: {
-                useState: useState,
-                useEffect: useEffect,
-                useContext: useContext,
-                useReducer: useReducer,
-                useCallback: useCallback,
-                useMemo: useMemo,
-                useRef: useRef,
-                useImperativeHandle: useImperativeHandle,
-                useLayoutEffect: useLayoutEffect,
-                useDebugValue: useDebugValue
-            }
-        });
         expect(HarnessApi).toMatchObject({isGwLab: isGwLab})
     });
 
@@ -52,14 +36,5 @@ describe('HarnessAPI', () => {
 
         expect(localStorage.authToken).toEqual("my_token");
         expect(localStorage.authRefreshToken).toEqual("my_refresh_token");
-    });
-
-    it('can get relay context', () => {
-        expect(HarnessApi.relayContext).toMatchObject({
-            _currentValue: null,
-            _currentValue2: null,
-            _currentRenderer: null,
-            _currentRenderer2: null
-        })
     });
 })

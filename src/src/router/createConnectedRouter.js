@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import ActionTypes from 'found/lib/ActionTypes';
+import ActionTypes from 'found/ActionTypes';
 import {createBaseRouter} from "./createBaseRouter";
 
 function resolveMatch(match) {
