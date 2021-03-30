@@ -37,6 +37,7 @@ export default createFragmentContainer(Layout, {
           username
           firstName
           lastName
+          isLigoUser
         }
     `
 });
