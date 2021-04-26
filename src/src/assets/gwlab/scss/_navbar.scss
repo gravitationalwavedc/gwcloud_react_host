@@ -1,0 +1,24 @@
+// Custom styles
+.navbar-brand-link {
+
+   img {
+      height: 40px;
+   }
+
+   &:hover,
+   &:active {
+       text-decoration: none;
+   }
+}
+
+.navbar.navbar-light {
+
+   background: $orange-200;
+   box-shadow: $shadow-base;
+   height: 64px;
+
+   .nav-username {
+      border-right: 2px solid $orange-600;
+      padding-right: 1.5rem;
+   }
+}

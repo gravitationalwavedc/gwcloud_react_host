@@ -1,28 +1,28 @@
-import React from "react";
-import {UpdatableResolver} from "./UpdatableResolver";
-import {Route, Redirect} from 'found'
-import Layout from "./Layout";
-import RemoteModule from "./RemoteModule";
-import NotFound from "./NotFound";
-import modules from './modules'
-import * as Enumerable from "linq";
-import {IS_DEV, isGwLab} from "./utils";
-import {graphql} from "react-relay";
-import HarnessApi from "./HarnessApi";
-import {getEnvironment} from "./Environment";
+import React from 'react';
+import {UpdatableResolver} from './UpdatableResolver';
+import {Route, Redirect} from 'found';
+import Layout from './Layout';
+import RemoteModule from './RemoteModule';
+import NotFound from './NotFound';
+import modules from './modules';
+import * as Enumerable from 'linq';
+import {IS_DEV, isGwLab} from './utils';
+import {graphql} from 'react-relay';
+import HarnessApi from './HarnessApi';
+import {getEnvironment} from './Environment';
 
 class GWCloudApp extends React.Component {
     render() {
         let _modules = Enumerable.from(modules()).select((e, i) => (
             <Route key={i}
-                   path={e.key + "*"}
-                   Component={props => (
-                       <RemoteModule
-                           _module_url={IS_DEV ? e.value.dev_bundle_url : e.value.bundle_url}
-                           _path={e.key}
-                           {...props}
-                       />
-                   )}
+                path={e.key + '*'}
+                Component={props => (
+                    <RemoteModule
+                        _module_url={IS_DEV ? e.value.dev_bundle_url : e.value.bundle_url}
+                        _path={e.key}
+                        {...props}
+                    />
+                )}
             />
         )).toArray();
 
@@ -35,12 +35,12 @@ class GWCloudApp extends React.Component {
             _modules = [
                 ..._modules,
                 (<Redirect key="redirectToViterbi" from="/" to="/viterbi/" status={302} />)
-            ]
+            ];
         } else {
             _modules = [
                 ..._modules,
                 (<Redirect key="redirectToBilby" from="/" to="/bilby/" status={302} />)
-            ]
+            ];
         }
 
         return (
@@ -62,7 +62,7 @@ class GWCloudApp extends React.Component {
 
                         HarnessApi.retryHarnessUserDetails = retry;
 
-                        return <Component {...props} />
+                        return <Component {...props} />;
                     }}
                     on
                 >
@@ -72,7 +72,7 @@ class GWCloudApp extends React.Component {
 
                 </Route>
             }/>
-        )
+        );
     }
 }
 

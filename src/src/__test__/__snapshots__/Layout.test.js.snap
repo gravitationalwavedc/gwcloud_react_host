@@ -99,7 +99,7 @@ Array [
     className="h-100"
     style={
       Object {
-        "marginTop": "56px",
+        "paddingTop": "64px",
       }
     }
   />,
@@ -205,7 +205,7 @@ Array [
     className="h-100"
     style={
       Object {
-        "marginTop": "56px",
+        "paddingTop": "64px",
       }
     }
   />,
