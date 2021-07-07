@@ -29,10 +29,10 @@ spec:
         redirect:
           url: https://gw-cloud.org${request_uri}
           code: 302
-    - path: ~* ^(/auth/ligo_continue/.*|/auth/static/.*|/auth/graphql)
+    - path: ~* ^/auth/(ligo_continue/.*|static/.*|graphql)
       action:
         pass: gwcloud-auth
-    - path: ~* ^(/bilby/static/.*|/bilby/graphql)
+    - path: ~* ^/bilby/(static/.*|graphql|file_download/.*)
       action:
         pass: gwcloud-bilby
     - path: ~* ^(/job/ws.*)

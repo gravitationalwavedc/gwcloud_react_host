@@ -23,10 +23,10 @@ spec:
         redirect:
           url: https://gw-cloud.org${request_uri}
           code: 302
-    - path: ~* ^(/auth/ligo_continue/.*|/auth/static/.*|/auth/graphql)
+    - path: ~* ^/auth/(ligo_continue/.*|static/.*|graphql)
       action:
         pass: gwcloud-auth
-    - path: ~* ^(/viterbi/static/.*|/viterbi/graphql)
+    - path: ~* ^/viterbi/(static/.*|graphql)
       action:
         pass: gwlab-viterbi
     - path: / 
