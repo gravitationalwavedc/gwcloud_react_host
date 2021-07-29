@@ -3,7 +3,7 @@ import {createFragmentContainer} from 'react-relay';
 import GWCloudMenu from './components/gwcloud/Menu';
 import GWLabMenu from './components/gwlab/Menu';
 import HarnessApi from './HarnessApi';
-import {isGwLab} from './utils';
+import {currentProject} from './utils';
 
 // regex list to match urls where the menu should be hidden.
 const noMenuURLs = [
@@ -19,7 +19,7 @@ const Layout = ({gwclouduser, children, match}) => {
     const user = setUser(gwclouduser);
     const name = user ? `${user.firstName} ${user.lastName}` : null;
     const showMenu = !noMenuURLs.some(regex => regex.test(match.location.pathname));
-    const Menu = isGwLab() ? GWLabMenu : GWCloudMenu;
+    const Menu = currentProject().menu;
     return (
         <React.Fragment>
             <header>

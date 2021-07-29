@@ -3,5 +3,6 @@ resources:
   - gwcloud.org.au.ing.yaml
   - gw-cloud.org.ing.yaml
   - gwlab.org.au.ing.yaml
+  - gwlandscape.org.au.ing.yaml
   - gwcloud_react_host_static.yaml
   - gwcloud_react_host_static_service_cp.yaml

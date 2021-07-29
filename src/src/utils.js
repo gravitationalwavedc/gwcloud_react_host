@@ -1,22 +1,63 @@
+import GWLabMenu from './components/gwlab/Menu';
+import GWLandscapeMenu from './components/gwlandscape/Menu';
+import GWCloudMenu from './components/gwcloud/Menu';
+
 const IS_DEV = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 const FORCE_GWLAB = !process.env.NODE_ENV || process.env.FORCE_DOMAIN === 'gwlab';
 const FORCE_GWCLOUD = !process.env.NODE_ENV || process.env.FORCE_DOMAIN === 'gwcloud';
+const FORCE_GWLANDSCAPE = !process.env.NODE_ENV || process.env.FORCE_DOMAIN === 'gwlandscape';
 
-function isGwLab() {
+const Projects = Object.freeze({
+    GWLAB: {
+        domainRegex: /(^|\.)gwlab\.org\.au$/,
+        domain: 'gwlab',
+        name: 'GWLab',
+        menu: GWLabMenu,
+    },
+    GWCLOUD: {
+        domainRegex: /(^|\.)gwcloud\.org\.au$/,
+        domain: 'gwcloud',
+        name: 'GWCloud',
+        menu: GWCloudMenu,
+        theme: './assets/gwcloud/scss/theme.scss'
+    },
+    GWLANDSCAPE: {
+        domainRegex: /(^|\.)gwlandscape\.org\.au$/,
+        domain: 'gwlandscape',
+        name: 'GWLandscape',
+        menu: GWLandscapeMenu,
+        theme: './assets/gwlandscape/scss/theme.scss'
+    }
+});
+
+function currentProject() {
     if (FORCE_GWLAB) {
-        return true;
+        return Projects.GWLAB;
     }
 
     if (FORCE_GWCLOUD) {
-        return false;
+        return Projects.GWCLOUD;
     }
 
-    // Match the host name against (*.)gwlab.org.au
-    // This will also check for subdomains if we decide to use them in the future
-    return (/(^|\.)gwlab\.org\.au$/.test(location.hostname));
+    if (FORCE_GWLANDSCAPE) {
+        return Projects.GWLANDSCAPE;
+    }
+
+    // Match the host name against the domain regexs to match the project
+    for (const project in Projects) {
+        if (!Projects.hasOwnProperty(project))
+            continue;
+
+        if (Projects[project].domainRegex.test(location.hostname))
+            return Projects[project];
+    }
+
+    // Not found
+    return null;
 }
 
 export {
     IS_DEV,
-    isGwLab
+    currentProject,
+    Projects
 }

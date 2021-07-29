@@ -1,0 +1,35 @@
+---
+# Ingress - Configuration documentation: https://docs.nginx.com/nginx-ingress-controller/configuration/virtualserver-and-virtualserverroute-resources/
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: gwlandscape-org-au-ing
+  namespace: gwcloud
+spec:
+  host: gwlandscape.org.au
+  upstreams:
+    - name: gwcloud-auth
+      service: gwcloud-auth
+      port: 8000
+    - name: gwcloud-react-host
+      service: gwcloud-react-host
+      port: 8000
+    - name: gwlandscape-compas
+      service: gwlandscape-compas-nginx
+      port: 8000
+  routes:
+    - path: ~* ^(/auth/ligo/|/Shibboleth.sso.*)
+      action:
+        redirect:
+          url: https://gw-cloud.org${request_uri}
+          code: 302
+    - path: ~* ^/auth/(ligo_continue/.*|static/.*|graphql)
+      action:
+        pass: gwcloud-auth
+    - path: ~* ^/compas/(static/.*|graphql)
+      action:
+        pass: gwlandscape-compas
+    - path: / 
+      action:
+        pass: gwcloud-react-host 
+---

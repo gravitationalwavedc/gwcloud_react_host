@@ -13,7 +13,7 @@ import React, {
     useRef,
     useState
 } from 'react';
-import {isGwLab} from "../utils";
+import {currentProject} from "../utils";
 
 describe('HarnessAPI', () => {
     it('contains expected keys', () => {
@@ -21,7 +21,7 @@ describe('HarnessAPI', () => {
         expect(HarnessApi).toHaveProperty("setAuthTokens");
         expect(HarnessApi).toHaveProperty("retryHarnessUserDetails");
         expect(HarnessApi).toMatchObject({currentUser: null});
-        expect(HarnessApi).toMatchObject({isGwLab: isGwLab})
+        expect(HarnessApi).toMatchObject({currentProject: currentProject})
     });
 
     it('can set the auth tokens', () => {

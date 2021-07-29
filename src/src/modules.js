@@ -1,4 +1,4 @@
-import {isGwLab} from "./utils";
+import {currentProject, Projects} from "./utils";
 
 function modules() {
     const _commonModules = {
@@ -11,7 +11,7 @@ function modules() {
         }
     };
 
-    if (isGwLab()) {
+    if (currentProject() === Projects.GWLAB) {
         // GWLab modules
         return {
             ..._commonModules,
@@ -23,7 +23,7 @@ function modules() {
                 bundle_url: "/viterbi/static/remoteEntry.js"
             }
         }
-    } else {
+    } else if (currentProject() === Projects.GWCLOUD) {
         // GWCloud modules
         return {
             ..._commonModules,
@@ -35,6 +35,20 @@ function modules() {
                 bundle_url: "/bilby/static/remoteEntry.js"
             }
         }
+    } else if (currentProject() === Projects.GWLANDSCAPE) {
+        // GWLandscape modules
+        return {
+            ..._commonModules,
+            compas: {
+                dev_graphql_url: "http://localhost:8001/graphql",
+                dev_bundle_url: "http://localhost:3004/remoteEntry.js",
+
+                graphql_url: "/compas/graphql",
+                bundle_url: "/compas/static/remoteEntry.js"
+            }
+        }
+    } else {
+        return null;
     }
 }
 

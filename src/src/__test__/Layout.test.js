@@ -4,12 +4,15 @@ import TestRenderer from 'react-test-renderer';
 import Layout from "../Layout";
 import {createMockEnvironment, MockPayloadGenerator} from "relay-test-utils";
 import {QueryRenderer} from 'react-relay';
+import {mockLocationHostName} from "./testUtils";
 
 jest.mock('found', () => ({
     Link: component => <a {...component}>{component.children}</a>
 }))
 
 test('Layout renders login if user is not set', () => {
+    mockLocationHostName("gwlab.org.au");
+
     const environment = createMockEnvironment();
     const MyTestRenderer = () => (
         <QueryRenderer
@@ -52,6 +55,8 @@ test('Layout renders login if user is not set', () => {
 });
 
 test('Layout renders login if user is set', () => {
+    mockLocationHostName("gwlab.org.au");
+
     const environment = createMockEnvironment();
     const MyTestRenderer = () => (
         <QueryRenderer

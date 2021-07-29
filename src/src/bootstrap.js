@@ -1,15 +1,16 @@
 // Get the container to mount the react application in
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { isGwLab } from './utils';
+import {currentProject, Projects} from './utils';
 
 // Dynamically import styles.
 (async () => {
-    if(isGwLab()) {
+    if (currentProject() === Projects.GWLAB)
         await import('./assets/gwlab/scss/theme.scss');
-    } else {
+    else if (currentProject() === Projects.GWCLOUD)
         await import('./assets/gwcloud/scss/theme.scss');
-    }
+    else if (currentProject() === Projects.GWLANDSCAPE)
+        await import('./assets/gwlandscape/scss/theme.scss');
 })();
 
 // Assets

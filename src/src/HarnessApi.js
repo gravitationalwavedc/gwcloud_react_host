@@ -1,5 +1,5 @@
 import {getEnvironment} from "./Environment";
-import {isGwLab} from "./utils";
+import {currentProject, Projects} from "./utils";
 
 function setAuthTokens(token, refreshToken) {
     localStorage.authToken = token;
@@ -18,8 +18,9 @@ const HarnessApi = {
     retryHarnessUserDetails: () => {},
     // currentUser is set in App.jsx when Layout is rendered
     currentUser: null,
-    // Returns true if the site is currently rendering GWLab, otherwise false
-    isGwLab: isGwLab
+    // Returns the current project
+    currentProject: currentProject,
+    projects: Projects
 };
 
 export default HarnessApi;

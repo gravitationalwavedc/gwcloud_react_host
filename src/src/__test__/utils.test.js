@@ -1,25 +1,40 @@
 import {describe, expect, it, test} from "@jest/globals";
-import {isGwLab} from "../utils";
+import {currentProject, Projects} from "../utils";
 import {mockLocationHostName} from "./testUtils";
 
-describe('isGwLab', () => {
-    it('returns true if domain is gwlab.org.au', () => {
+describe('currentProject', () => {
+    it('returns Projects.GWLAB if domain is gwlab.org.au', () => {
         mockLocationHostName("gwlab.org.au");
-        expect(isGwLab()).toEqual(true);
+        expect(currentProject()).toEqual(Projects.GWLAB);
     });
 
-    it('returns true if domain is test.gwlab.org.au', () => {
+    it('returns Projects.GWLAB if domain is test.gwlab.org.au', () => {
         mockLocationHostName("test.gwlab.org.au");
-        expect(isGwLab()).toEqual(true);
+        expect(currentProject()).toEqual(Projects.GWLAB);
     });
 
-    it('returns false if domain is gwcloud.org.au', () => {
+    it('returns Projects.GWCLOUD if domain is gwcloud.org.au', () => {
         mockLocationHostName("gwcloud.org.au");
-        expect(isGwLab()).toEqual(false);
+        expect(currentProject()).toEqual(Projects.GWCLOUD);
     });
 
-    it('returns false if domain is test.gwcloud.org.au', () => {
+    it('returns Projects.GWCLOUD if domain is test.gwcloud.org.au', () => {
         mockLocationHostName("test.gwcloud.org.au");
-        expect(isGwLab()).toEqual(false);
+        expect(currentProject()).toEqual(Projects.GWCLOUD);
+    });
+
+    it('returns Projects.GWLANDSCAPE if domain is gwlandscape.org.au', () => {
+        mockLocationHostName("gwlandscape.org.au");
+        expect(currentProject()).toEqual(Projects.GWLANDSCAPE);
+    });
+
+    it('returns Projects.GWLANDSCAPE if domain is test.gwlandscape.org.au', () => {
+        mockLocationHostName("test.gwlandscape.org.au");
+        expect(currentProject()).toEqual(Projects.GWLANDSCAPE);
+    });
+
+    it('returns null if domain is test.org.au', () => {
+        mockLocationHostName("test.org.au");
+        expect(currentProject()).toEqual(null);
     });
 });

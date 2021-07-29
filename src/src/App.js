@@ -6,7 +6,7 @@ import RemoteModule from './RemoteModule';
 import NotFound from './NotFound';
 import modules from './modules';
 import * as Enumerable from 'linq';
-import {IS_DEV, isGwLab} from './utils';
+import {IS_DEV, currentProject, Projects} from './utils';
 import {graphql} from 'react-relay';
 import HarnessApi from './HarnessApi';
 import {getEnvironment} from './Environment';
@@ -31,15 +31,20 @@ class GWCloudApp extends React.Component {
             (<Route path="*" key="notfound" Component={NotFound}/>)
         ];
 
-        if (isGwLab()) {
+        if (currentProject() === Projects.GWLAB) {
             _modules = [
                 ..._modules,
                 (<Redirect key="redirectToViterbi" from="/" to="/viterbi/" status={302} />)
             ];
-        } else {
+        } else if (currentProject() === Projects.GWCLOUD) {
             _modules = [
                 ..._modules,
                 (<Redirect key="redirectToBilby" from="/" to="/bilby/" status={302} />)
+            ];
+        } else if (currentProject() === Projects.GWLANDSCAPE) {
+            _modules = [
+                ..._modules,
+                (<Redirect key="redirectToCompas" from="/" to="/compas/" status={302} />)
             ];
         }
 
