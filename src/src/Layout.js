@@ -7,7 +7,7 @@ import {currentProject} from './utils';
 
 // regex list to match urls where the menu should be hidden.
 const noMenuURLs = [
-    /\/auth\/.*/ 
+    /\/auth\/(?!api-token).*/ 
 ];
 
 const setUser = (user) => {

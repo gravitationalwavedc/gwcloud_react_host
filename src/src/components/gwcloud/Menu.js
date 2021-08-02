@@ -3,7 +3,7 @@ import {logout} from '../../Environment';
 import {Link} from 'found';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import { HiOutlineUserCircle, HiOutlineLogout } from 'react-icons/hi';
+import { HiOutlineUserCircle, HiOutlineLogout, HiOutlineCode } from 'react-icons/hi';
 import GWCloudLogo from '../../assets/gwcloud/images/GWCloud-logo-primary200.png';
 
 const iconStyle = {
@@ -15,6 +15,12 @@ const subMenu = (name) => {
     if(name){
         return (
             <Nav>
+                <Nav.Link
+                    className="justify-content-end mr-3"
+                    href="https://gwcloud-python.readthedocs.io/en/latest/gettingstarted.html"
+                >
+                    <HiOutlineCode style={iconStyle}/> Python API
+                </Nav.Link>
                 <Navbar.Text className="justify-content-end mr-3">
                     <HiOutlineUserCircle style={iconStyle}/> {name}
                 </Navbar.Text>

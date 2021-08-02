@@ -28,6 +28,38 @@ exports[`the menu component displays correctly when logged in 1`] = `
     className="navbar-nav"
     onKeyDown={[Function]}
   >
+    <a
+      className="justify-content-end mr-3 nav-link"
+      data-rb-event-key="https://gwcloud-python.readthedocs.io/en/latest/gettingstarted.html"
+      href="https://gwcloud-python.readthedocs.io/en/latest/gettingstarted.html"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      <svg
+        fill="none"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+            "height": "20px",
+            "margin": "-2px 2px 0 0",
+          }
+        }
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+      </svg>
+       Python API
+    </a>
     <span
       className="justify-content-end mr-3 navbar-text"
     >
