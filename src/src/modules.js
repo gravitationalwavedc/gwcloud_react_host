@@ -40,7 +40,7 @@ function modules() {
         return {
             ..._commonModules,
             compas: {
-                dev_graphql_url: "http://localhost:8001/graphql",
+                dev_graphql_url: "http://localhost:8003/graphql",
                 dev_bundle_url: "http://localhost:3004/remoteEntry.js",
 
                 graphql_url: "/compas/graphql",
