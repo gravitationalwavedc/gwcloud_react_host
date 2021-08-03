@@ -21,6 +21,13 @@ function modules() {
 
                 graphql_url: "/viterbi/graphql",
                 bundle_url: "/viterbi/static/remoteEntry.js"
+            },
+            cwfollowup: {
+                dev_graphql_url: "http://localhost:8004/graphql",
+                dev_bundle_url: "http://localhost:3005/remoteEntry.js",
+
+                graphql_url: "/cwfollowup/graphql",
+                bundle_url: "/cwfollowup/static/remoteEntry.js"
             }
         }
     } else if (currentProject() === Projects.GWCLOUD) {

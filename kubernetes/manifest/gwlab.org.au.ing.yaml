@@ -17,6 +17,9 @@ spec:
     - name: gwlab-viterbi
       service: gwlab-viterbi-nginx
       port: 8000
+    - name: gwlab-cwfollowup
+      service: gwlab-cwfollowup-nginx
+      port: 8000
   routes:
     - path: ~* ^(/auth/ligo/|/Shibboleth.sso.*)
       action:
@@ -29,6 +32,9 @@ spec:
     - path: ~* ^/viterbi/(static/.*|graphql)
       action:
         pass: gwlab-viterbi
+    - path: ~* ^/cwfollowup/(static/.*|graphql)
+      action:
+        pass: gwlab-cwfollowup
     - path: / 
       action:
         pass: gwcloud-react-host 
