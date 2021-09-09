@@ -10,9 +10,13 @@ const subMenu = (name) => {
         return (
             <>
                 <Nav className="mr-auto">
-                    <Nav.Link>Home</Nav.Link>
-                    <Nav.Link>Experiments</Nav.Link>
-                    <Nav.Link>New Experiment</Nav.Link>
+                    <Link className="nav-link" to="/" exact>Home</Link>
+                    <Link className="nav-link" to="/viterbi/" exact>
+                        Experiments
+                    </Link>
+                    <Link className="nav-link" to="/viterbi/job-form/" exact>
+                        New Experiment
+                    </Link>
                 </Nav>
                 <Nav>
                     <Navbar.Text className="justify-content-end mr-3 nav-username">

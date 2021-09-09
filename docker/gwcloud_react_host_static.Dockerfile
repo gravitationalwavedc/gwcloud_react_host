@@ -27,7 +27,7 @@ RUN rm -Rf /tmp/gwcloud-auth
 # Build webpack bundle
 RUN mkdir /static
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
-RUN . ~/.nvm/nvm.sh && cd /src && nvm install && nvm use && nvm install-latest-npm && npm install && npm run relay && npm run build
+RUN . ~/.nvm/nvm.sh && cd /src && nvm install && nvm use && npm install && npm run relay && npm run build
 
 # Don't need any of the javascipt code now
 RUN rm -Rf /src

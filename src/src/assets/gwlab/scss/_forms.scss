@@ -1,30 +1,85 @@
-// Fix layout issue with Form error messages
-p.text-danger.small {
-   margin-bottom: 0;
+.btn,
+.input-group > .form-control,
+.input-group > .form-control-plaintext,
+.input-group > .custom-select,
+.input-group > .custom-file,
+.custom-select {
+    font-size: 15px !important;
+    line-height: 18px !important;
+    letter-spacing: 1.25px;
 }
 
-// Inputs
+.btn.btn-primary {
+    color: $orange-100;
+    background-color: $orange-600;
+}
+
 .form-group {
-     min-height: 94px;
-
-    .form-control, 
-    .custom-select,
-    .gw-select__control {
-        border: none;
-        box-shadow: $shadow-inner;
-        background-color: $gray-200;
-    }
-
-    .input-group-text {
-        border: none;
+    .form-control,
+    .custom-select {
+        border-color: $orange-500;
+        -webkit-appearance: none;
     }
 }
 
-// Buttons
-.btn-primary {
-   box-shadow: $shadow-md;
+.btn.btn-outline-primary {
+    color: $orange-600;
 
-   &:hover {
-        box-shadow: $shadow-base;
-   }
+    &:hover:enabled {
+        color: $orange-100;
+    }
+}
+
+.edit-button {
+  background: none;
+  border: none;
+  padding: none;
+
+  &:hover,
+  &:focus {
+    color: $orange;
+    outline: none;
+  }
+}
+
+.save-button {
+  background: none;
+  border: none;
+  padding: none;
+  color: $accent-green;
+
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}
+
+.cancel-button {
+  background: none;
+  border: none;
+  padding: none;
+  color: $accent-red;
+
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}
+
+.form-container {
+    background: $orange-100;
+}
+
+.form-row {
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    .form-break {
+        padding-top: 24px;
+    }
+}
+
+.form-title-row {
+    padding-top: 24px;
+    padding-bottom: 24px;
 }

@@ -25,31 +25,22 @@ Array [
       >
         <a
           className="nav-link"
-          data-rb-event-key={null}
-          href="#"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          role="button"
+          exact={true}
+          to="/"
         >
           Home
         </a>
         <a
           className="nav-link"
-          data-rb-event-key={null}
-          href="#"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          role="button"
+          exact={true}
+          to="/viterbi/"
         >
           Experiments
         </a>
         <a
           className="nav-link"
-          data-rb-event-key={null}
-          href="#"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          role="button"
+          exact={true}
+          to="/viterbi/job-form/"
         >
           New Experiment
         </a>
@@ -112,31 +103,22 @@ Array [
       >
         <a
           className="nav-link"
-          data-rb-event-key={null}
-          href="#"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          role="button"
+          exact={true}
+          to="/"
         >
           Home
         </a>
         <a
           className="nav-link"
-          data-rb-event-key={null}
-          href="#"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          role="button"
+          exact={true}
+          to="/viterbi/"
         >
           Experiments
         </a>
         <a
           className="nav-link"
-          data-rb-event-key={null}
-          href="#"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          role="button"
+          exact={true}
+          to="/viterbi/job-form/"
         >
           New Experiment
         </a>
