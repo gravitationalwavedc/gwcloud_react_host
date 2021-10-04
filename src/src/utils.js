@@ -1,4 +1,6 @@
+import {Helmet} from 'react-helmet';
 import GWLabMenu from './components/gwlab/Menu';
+import GWLabHelmet from './components/gwlab/Helmet';
 import GWLandscapeMenu from './components/gwlandscape/Menu';
 import GWCloudMenu from './components/gwcloud/Menu';
 
@@ -13,20 +15,23 @@ const Projects = Object.freeze({
         domain: 'gwlab',
         name: 'GWLab',
         menu: GWLabMenu,
+        helmet: GWLabHelmet
     },
     GWCLOUD: {
         domainRegex: /(^|\.)gwcloud\.org\.au$/,
         domain: 'gwcloud',
         name: 'GWCloud',
         menu: GWCloudMenu,
-        theme: './assets/gwcloud/scss/theme.scss'
+        theme: './assets/gwcloud/scss/theme.scss',
+        helmet: Helmet
     },
     GWLANDSCAPE: {
         domainRegex: /(^|\.)gwlandscape\.org\.au$/,
         domain: 'gwlandscape',
         name: 'GWLandscape',
         menu: GWLandscapeMenu,
-        theme: './assets/gwlandscape/scss/theme.scss'
+        theme: './assets/gwlandscape/scss/theme.scss',
+        helmet: Helmet
     }
 });
 
@@ -60,4 +65,4 @@ export {
     IS_DEV,
     currentProject,
     Projects
-}
+};

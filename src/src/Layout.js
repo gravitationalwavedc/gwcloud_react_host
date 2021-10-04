@@ -1,7 +1,5 @@
 import React from 'react';
 import {createFragmentContainer} from 'react-relay';
-import GWCloudMenu from './components/gwcloud/Menu';
-import GWLabMenu from './components/gwlab/Menu';
 import HarnessApi from './HarnessApi';
 import {currentProject} from './utils';
 
@@ -20,8 +18,11 @@ const Layout = ({gwclouduser, children, match}) => {
     const name = user ? `${user.firstName} ${user.lastName}` : null;
     const showMenu = !noMenuURLs.some(regex => regex.test(match.location.pathname));
     const Menu = currentProject().menu;
+    const Helmet = currentProject().helmet;
+
     return (
         <React.Fragment>
+            <Helmet />
             <header>
                 {showMenu && <Menu name={name}/>}
             </header>

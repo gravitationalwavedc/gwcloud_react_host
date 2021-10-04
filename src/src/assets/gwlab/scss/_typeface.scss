@@ -1,13 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700');
+@import url('https://use.typekit.net/epr1fqs.css');
 
 // GWLab fonts
-$font-family-sans-serif: 'Lato', sans-serif;
+$font-family-sans-serif: 'lemon-sans-next', sans-serif;
+$font-family-display: 'lemon-sans-next-condensed', sans-serif;
+
+html {
+   font-size: 16px;
+}
 
 h1, .h1 {
-   font-weight: 300 !important;
-   font-size: 101px !important;
-   line-height: 121px !important;
-   letter-spacing: -1.5px;
+   font-family: $font-family-display;
+   font-weight: 600 !important;
+   font-size: 8em !important;
 }
 
 h2, .h2 {
