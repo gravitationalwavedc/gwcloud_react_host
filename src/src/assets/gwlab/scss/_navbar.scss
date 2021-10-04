@@ -12,17 +12,21 @@
 }
 
 .navbar.navbar-light {
-
+   font-family: $font-family-display;
    background: $orange-200;
-   box-shadow: $shadow-base;
    font-weight: 500;
+
+   &:not(.fixed-bottom) {
+      box-shadow: $shadow-base;
+   }
 
    .nav-title {
       margin-left: -1rem;
       color: $orange-600;
    }
-
+   
    .nav-username {
+      font-family: $font-family-sans-serif;
       text-transform: capitalize;
       font-weight: 300;
 
@@ -45,4 +49,8 @@
    @include media-breakpoint-down(sm) {
       margin-top: 2rem;
    }
+}
+
+.top-shadow {
+   box-shadow: $shadow-base-top;
 }

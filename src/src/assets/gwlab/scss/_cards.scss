@@ -13,16 +13,44 @@
       box-shadow: $shadow-base;
    }
 
+   .card-text {
+      font-weight: 600;
+   }
+
    .card-footer {
       background-color: unset;
       border: none;
+      padding-top: 8px;
+      padding-right: 8px;
 
-      a {
+      a:not(:last-child) {
          margin-right: 1rem;
       }
    }
 
+   [class^="status-"],
+   [class*=" status-"] {
+      font-variant: small-caps;
+      font-weight: 400;
+      font-size: 1.25rem;
+   }
+
    .status-completed {
       color: $accent-green;
+   }
+
+   .status-submitted {
+      color: $orange-600;
+   }
+
+   .card-action {
+      font-variant: small-caps;
+      font-family: $font-family-display;
+   }
+}
+
+.jobs-container {
+   @include media-breakpoint-down(sm) {
+      margin-bottom: 86px;
    }
 }

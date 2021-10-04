@@ -4,9 +4,9 @@
 .input-group > .custom-select,
 .input-group > .custom-file,
 .custom-select {
-    font-size: 15px !important;
-    line-height: 18px !important;
-    letter-spacing: 1.25px;
+    font-family: $font-family-display !important;
+    font-weight: 500 !important;
+    font-variant: small-caps;
 }
 
 .btn.btn-primary {

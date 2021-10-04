@@ -22,7 +22,7 @@ h2, .h2 {
 }
 
 h4, .h4 {
-   font-weight: 400 !important;
+   font-weight: 600 !important;
    font-size: 36px!important;
    line-height: 43px !important;
    letter-spacing: 0.25px;
@@ -36,17 +36,15 @@ h6, .h6 {
 }
 
 .subtitle-1 {
-   font-weight: 400 !important;
-   font-size: 17px !important;
-   line-height: 20.4px !important;
-   letter-spacing: 0.15px !important;
+   font-weight: 300 !important;
+   font-size: 1rem !important;
+   line-height: normal !important;
 }
 
 .text-button {
     font-weight: 400px;
     font-size: 15px !important;
-    line-height: 18px !important;
-    letter-spacing: 1.25px;
+    font-variant: small-caps !important;
 }
 
 .caption {
@@ -71,8 +69,8 @@ p.body-2 {
 }
 
 .btn {
-   font-weight: 700;
-   font-size: 15px;
-   line-height: 18px;
-   letter-spacing: 1.25px;
+   font-weight: 500 !important;
+   font-size: 1.1rem;
+   font-family: $font-family-display;
+   font-variant: small-caps;
 }
