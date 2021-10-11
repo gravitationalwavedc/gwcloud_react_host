@@ -1,20 +1,13 @@
 .card.gwlab-job-card {
    margin: 1px 2px 16px 1px;
 
-   .card-title {
-      margin-bottom: .75rem;
-   }
-
    .card-subtitle {
+      margin-top: -0.6rem;
       margin-bottom: 1rem;
    }
 
    .card-body {
       box-shadow: $shadow-base;
-   }
-
-   .card-text {
-      font-weight: 600;
    }
 
    .card-footer {
@@ -31,8 +24,10 @@
    [class^="status-"],
    [class*=" status-"] {
       font-variant: small-caps;
-      font-weight: 400;
-      font-size: 1.25rem;
+      font-size: 1.4rem;
+      position: absolute;
+      bottom: 69px;
+      right: 16px;
    }
 
    .status-completed {

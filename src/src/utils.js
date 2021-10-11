@@ -15,7 +15,8 @@ const Projects = Object.freeze({
         domain: 'gwlab',
         name: 'GWLab',
         menu: GWLabMenu,
-        helmet: GWLabHelmet
+        helmet: GWLabHelmet,
+        menuPadding: '86px'
     },
     GWCLOUD: {
         domainRegex: /(^|\.)gwcloud\.org\.au$/,
@@ -23,7 +24,8 @@ const Projects = Object.freeze({
         name: 'GWCloud',
         menu: GWCloudMenu,
         theme: './assets/gwcloud/scss/theme.scss',
-        helmet: Helmet
+        helmet: Helmet,
+        menuPadding: '64px'
     },
     GWLANDSCAPE: {
         domainRegex: /(^|\.)gwlandscape\.org\.au$/,
@@ -31,7 +33,8 @@ const Projects = Object.freeze({
         name: 'GWLandscape',
         menu: GWLandscapeMenu,
         theme: './assets/gwlandscape/scss/theme.scss',
-        helmet: Helmet
+        helmet: Helmet,
+        menuPadding: '64px'
     }
 });
 

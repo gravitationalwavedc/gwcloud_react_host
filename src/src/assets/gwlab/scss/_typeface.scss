@@ -5,45 +5,43 @@ $font-family-sans-serif: 'lemon-sans-next', sans-serif;
 $font-family-display: 'lemon-sans-next-condensed', sans-serif;
 
 html {
-   font-size: 16px;
+   font-size: 18px;
 }
 
-h1, .h1 {
+h1.title-display, .h1.title-display {
    font-family: $font-family-display;
+   font-size: 8rem !important;
    font-weight: 600 !important;
-   font-size: 8em !important;
+}
+
+h1 {
+   font-family: $font-family-display;
+   font-size: 2.5rem;
 }
 
 h2, .h2 {
    font-weight: 300 !important;
-   font-size: 63px !important;
-   line-height: 75.6px !important;
-   letter-spacing: -0.5px;
 }
 
 h4, .h4 {
    font-weight: 600 !important;
-   font-size: 36px!important;
-   line-height: 43px !important;
-   letter-spacing: 0.25px;
+}
+
+h5, .h5 {
+   font-weight: 400 !important;
+   font-size: 1.35rem !important;
 }
 
 h6, .h6 {
    font-weight: 700 !important;
-   font-size: 21px !important;
-   line-height: 25px !important;
-   letter-spacing: 0.15px !important;
 }
 
-.subtitle-1 {
+.h6.subtitle-1 {
    font-weight: 300 !important;
-   font-size: 1rem !important;
-   line-height: normal !important;
 }
 
 .text-button {
     font-weight: 400px;
-    font-size: 15px !important;
     font-variant: small-caps !important;
 }
 
@@ -69,7 +67,7 @@ p.body-2 {
 }
 
 .btn {
-   font-weight: 500 !important;
+   font-weight: 600 !important;
    font-size: 1.1rem;
    font-family: $font-family-display;
    font-variant: small-caps;
