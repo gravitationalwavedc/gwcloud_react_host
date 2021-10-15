@@ -30,14 +30,6 @@
       right: 16px;
    }
 
-   .status-completed {
-      color: $accent-green;
-   }
-
-   .status-submitted {
-      color: $orange-600;
-   }
-
    .card-action {
       font-variant: small-caps;
       font-family: $font-family-display;
@@ -48,4 +40,12 @@
    @include media-breakpoint-down(sm) {
       margin-bottom: 86px;
    }
+}
+
+.status-completed {
+   color: $accent-green;
+}
+
+.status-submitted {
+   color: $orange-600;
 }
