@@ -1,8 +1,0 @@
-// fix scrollbar jumping issue
-html {
-   padding-left: calc(100vw - 100%);
-}
-
-nav.navbar.fixed-top {
-   padding-left: calc(100vw - 100% + 1rem);
-}
