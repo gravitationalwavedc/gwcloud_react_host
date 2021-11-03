@@ -12,6 +12,11 @@
    }
 }
 
+.nav-link.active {
+   color: $orange-900;
+   font-weight: 600;
+}
+
 .navbar.navbar-light {
    font-family: $font-family-display;
    background: $orange-200;

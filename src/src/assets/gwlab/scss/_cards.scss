@@ -2,8 +2,13 @@
    margin: 1px 2px 16px 1px;
 
    .card-subtitle {
-      margin-top: -0.6rem;
       margin-bottom: 1rem;
+      margin-top: -0.6rem;
+
+      @include media-breakpoint-down(sm) {
+         margin-top: 1rem;
+      }
+
    }
 
    .card-body {

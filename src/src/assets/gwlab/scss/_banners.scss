@@ -41,3 +41,21 @@ svg.gwlab-lines {
       stroke-dashoffset: 0;
    }
 }
+
+// Ozstar Logo on review page banner
+.review-logo {
+   height: 3em;
+   margin-top: -3em;
+
+   @include media-breakpoint-up(md) {
+      height: 4em;
+      margin-top: 0.6em;
+   }
+}
+
+.gwlab-circle {
+   position: absolute; 
+   bottom: -222px; 
+   left: -222px; 
+}
+
