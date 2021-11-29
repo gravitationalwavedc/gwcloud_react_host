@@ -24,7 +24,7 @@ const Layout = ({gwclouduser, children, match}) => {
         <React.Fragment>
             <Helmet />
             <header>
-                {showMenu && <Menu name={name}/>}
+                {showMenu && <Menu name={name} match={match}/>}
             </header>
             <main className="h-100" style={showMenu ? {paddingTop: currentProject().menuPadding} : null}>
                 {children}

@@ -24,9 +24,7 @@ Array [
         </span>
         <h4
           className="text-center d-md-none nav-title"
-        >
-          Viterbi
-        </h4>
+        />
         <button
           aria-controls="responsive-navbar-nav"
           aria-label="Toggle navigation"
@@ -50,14 +48,14 @@ Array [
             <a
               className="nav-link"
               exact={true}
-              to="/viterbi/"
+              to="/"
             >
               Experiments
             </a>
             <a
               className="nav-link"
               exact={true}
-              to="/viterbi/job-form/"
+              to="/"
             >
               New Experiment
             </a>
@@ -121,9 +119,7 @@ Array [
         </span>
         <h4
           className="text-center d-md-none nav-title"
-        >
-          Viterbi
-        </h4>
+        />
         <button
           aria-controls="responsive-navbar-nav"
           aria-label="Toggle navigation"
@@ -147,14 +143,14 @@ Array [
             <a
               className="nav-link"
               exact={true}
-              to="/viterbi/"
+              to="/"
             >
               Experiments
             </a>
             <a
               className="nav-link"
               exact={true}
-              to="/viterbi/job-form/"
+              to="/"
             >
               New Experiment
             </a>
