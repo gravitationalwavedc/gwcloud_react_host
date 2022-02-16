@@ -3,4 +3,4 @@ plugins:
     enabled: true
     channel: "eslint-7"
     config:
-      config: src/react/.eslintrc.json
+      config: src/.eslintrc.json
