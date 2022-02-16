@@ -1,6 +1,0 @@
-{
-	"load": ["arcutils"],
-	"unit.engine": "JestUnitTestEngine",
-        "unit.engine.jest.root_dir": "src",
-        "unit.engine.jest.jest_binary": "./node_modules/.bin/jest"
-}
