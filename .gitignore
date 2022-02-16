@@ -5,6 +5,7 @@ node_modules/
 secret.yaml
 src/coverage/
 junit.xml
+src/.data
 
 # Apple
 .DS_Store

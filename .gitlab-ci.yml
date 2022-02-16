@@ -1,0 +1,58 @@
+default:
+  image:
+    name: ubuntu:20.04
+    entrypoint: ["/usr/bin/env"]
+
+  before_script:
+    - apt -y update
+    - apt -y install apt-utils
+    - apt -y install net-tools python3.8 python3-pip git curl
+    - apt -y upgrade
+    - curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+
+
+npm-tests:
+  stage: test
+  script:
+    - mkdir .tmp
+    - cd .tmp
+    - git clone https://github.com/gravitationalwavedc/gwcloud_auth.git
+    - cd gwcloud_auth/src
+    - pip3 install -r requirements.txt
+    - mkdir -p logs
+    - mkdir -p react/data
+    - python3 development-manage.py graphql_schema
+    - mkdir -p ../../../src/.data
+    - mv react/data/schema.json ../../../src/.data/
+    - cd ../../../src/
+    - export NVM_DIR="$HOME/.nvm" && . "$NVM_DIR/nvm.sh" --no-use
+    - eval "[ -f .nvmrc ] && nvm install && nvm use && nvm install-latest-npm"
+    - npm install
+    - npm run relay-ci
+    - npm run test-ci
+
+  artifacts:
+    reports:
+      cobertura: src/coverage/cobertura-coverage.xml
+      junit: src/junit.xml
+
+
+code-quality:
+  image: docker:stable
+  variables:
+    DOCKER_DRIVER: overlay2
+    SP_VERSION: 0.85.26
+  allow_failure: true
+  services:
+    - docker:stable-dind
+  before_script: []
+  script:
+    - docker run
+        --env SOURCE_CODE="$PWD"
+        --volume "$PWD":/code
+        --volume /var/run/docker.sock:/var/run/docker.sock
+        "registry.gitlab.com/gitlab-org/ci-cd/codequality:$SP_VERSION" /code
+  artifacts:
+    reports:
+      codequality: gl-code-quality-report.json
+
