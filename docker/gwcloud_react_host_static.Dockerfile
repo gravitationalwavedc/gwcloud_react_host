@@ -2,7 +2,7 @@ FROM nginx:latest
 
 # Install needed packages
 RUN apt-get update
-RUN apt-get install -y curl git python3 python-virtualenv
+RUN apt-get install -y curl git python3 python3-virtualenv
 
 # Pull down and set up the auth repo
 RUN cd /tmp && git clone https://github.com/gravitationalwavedc/gwcloud_auth.git
