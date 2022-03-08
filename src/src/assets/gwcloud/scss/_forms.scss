@@ -7,6 +7,10 @@ p.text-danger.small {
 .form-group {
      min-height: 94px;
 
+     &.form-initial-height {
+         min-height: initial;
+     }
+
     .form-control, 
     .custom-select,
     .gw-select__control {
