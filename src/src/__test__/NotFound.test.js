@@ -1,10 +1,13 @@
-import React from "react";
-import {expect, test} from "@jest/globals";
-import TestRenderer from 'react-test-renderer';
-import NotFound from "../NotFound";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
 
-test('Test Not Found', () => {
-    const renderer = TestRenderer.create(<NotFound />);
-    expect(renderer).toMatchSnapshot();
+import NotFound from '../NotFound';
+
+describe('not found component', () => {
+    it('renders', () => {
+        expect.hasAssertions();
+        render(<NotFound/>);
+        expect(screen.queryByText('Page Not Found')).toBeInTheDocument();
+    });
 });
 

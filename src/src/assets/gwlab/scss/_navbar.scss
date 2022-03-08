@@ -60,3 +60,27 @@
 .top-shadow {
    box-shadow: $shadow-base-top;
 }
+
+.navbar.navbar-secondary {
+   font-family: $font-family-display;
+   background: $orange-700;
+   font-weight: 600;
+   height: 30px;
+   margin-top: 83px;
+
+   .nav-link {
+      color: $orange-100;
+      padding-top: 0;
+      padding-bottom: 0;
+      
+      &:hover,
+      &:active,
+      &:focus {
+         color: $orange-300
+      }
+   }
+
+   .navbar-collapse {
+      background: $orange-700;
+   }
+}
