@@ -6,40 +6,28 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import GWLabLogo from '../../assets/gwlab/images/logo.svg';
 
+const modules = [
+    {domain: 'viterbi', name: 'Viterbi', homeLink: '/viterbi'},
+    {domain: 'cwfollowup', name: 'CWFollowup', homeLink: '/cwfollowup'}
+];
+
 const moduleFromMatch = (match) => {
-    if (match.location.pathname.includes('viterbi')) {
-        return {
-            name: 'Viterbi',
-            jobsLink: '/viterbi/',
-            newJobLink: '/viterbi/job-form/'
-        }
-    } else if (match.location.pathname.includes('cwfollowup')) {
-        return {
-            name: 'CWFollowup',
-            jobsLink: '/cwfollowup/',
-            newJobLink: '/cwfollowup/new-job/'
-        }
-    } else {
-        return {
-            name: null,
-            jobsLink: '/',
-            newJobLink: '/',
-        }
-    }
-}
+    const currentModule = modules.find(mod => match.location.pathname.includes(mod.domain));
+    return currentModule || {name: null, homelink: '/'};
+};
 
-
-const subMenu = (name, moduleData) => {
+const subMenu = (name) => {
     if (name) {
         return (
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                    <Link className="nav-link" to={moduleData.jobsLink} exact>
-                        Experiments
-                    </Link>
-                    <Link className="nav-link" to={moduleData.newJobLink} exact>
-                        New Experiment
-                    </Link>
+                    {
+                        modules.map(({name, homeLink}, index) => 
+                            <Link key={index} className="nav-link" to={homeLink} exact>
+                                {name}
+                            </Link>
+                        )
+                    }
                 </Nav>
                 <Nav>
                     <Navbar.Text className="justify-content-end mr-3 nav-username">
@@ -61,18 +49,17 @@ const subMenu = (name, moduleData) => {
 };
 
 const Menu = ({name, match}) => {
-    const moduleData = moduleFromMatch(match)
+    const moduleData = moduleFromMatch(match);
 
-    const SubMenu = subMenu(name, moduleData);
+    const SubMenu = subMenu(name);
     return (
         <Navbar collapseOnSelect expand="md" fixed="top">
             <Container>
                 <Navbar.Brand>
-                    <Link to={moduleData.jobsLink} exact className="navbar-brand-link">
+                    <Link to={moduleData.homeLink} exact className="navbar-brand-link" data-testid="GWLabLogo">
                         <img src={GWLabLogo} />
                     </Link>
                 </Navbar.Brand>
-                <h4 className="text-center d-md-none nav-title">{moduleData.name}</h4>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                 {SubMenu}
             </Container>

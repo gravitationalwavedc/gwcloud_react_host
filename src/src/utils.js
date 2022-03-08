@@ -16,7 +16,7 @@ const Projects = Object.freeze({
         name: 'GWLab',
         menu: GWLabMenu,
         helmet: GWLabHelmet,
-        menuPadding: '86px'
+        menuPadding: '116px',
     },
     GWCLOUD: {
         domainRegex: /(^|\.)gwcloud\.org\.au$/,
