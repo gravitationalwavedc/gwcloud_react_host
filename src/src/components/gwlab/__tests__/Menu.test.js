@@ -4,9 +4,11 @@ import { render, screen } from '@testing-library/react';
 import Menu from '../Menu';
 
 jest.mock('found', () => ({
-    Link: ({exact, ...component}) => <a {...component}>{component.children}</a>
+    Link: ({...component}) => {
+        delete component.exact;
+        return <a {...component}>{component.children}</a>;
+    }
 }));
-
 describe('the gwlab menu component', () => {
     it('renders logout when provided a name', () => {
         expect.hasAssertions();

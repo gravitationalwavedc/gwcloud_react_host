@@ -4,7 +4,10 @@ import { render, screen } from '@testing-library/react';
 import Menu from '../Menu';
 
 jest.mock('found', () => ({
-    Link: ({exact, ...component}) => <a {...component}>{component.children}</a>
+    Link: ({...component}) => {
+        delete component.exact;
+        return <a {...component}>{component.children}</a>;
+    }
 }));
 
 describe('the gwcloud menu component', () => {

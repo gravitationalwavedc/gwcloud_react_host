@@ -7,7 +7,10 @@ import HarnessApi from '../HarnessApi';
 import Layout from '../Layout';
 
 jest.mock('found', () => ({
-    Link: ({exact, ...component}) => <a {...component}>{component.children}</a>
+    Link: ({...component}) => {
+        delete component.exact;
+        return <a {...component}>{component.children}</a>;
+    }
 }));
 
 describe('layout component', () => {
