@@ -13,7 +13,7 @@ const modules = [
 
 const moduleFromMatch = (match) => {
     const currentModule = modules.find(mod => match.location.pathname.includes(mod.domain));
-    return currentModule || {name: null, homelink: '/'};
+    return currentModule || {name: null, homeLink: '/'};
 };
 
 const subMenu = (name) => {

@@ -3,17 +3,10 @@ import { render, screen } from '@testing-library/react';
 
 import Menu from '../Menu';
 
-jest.mock('found', () => ({
-    Link: ({...component}) => {
-        delete component.exact;
-        return <a {...component}>{component.children}</a>;
-    }
-}));
-
 describe('the gwcloud menu component', () => {
     it('renders logout when provided a name', () => {
         expect.hasAssertions();
-        render(<Menu name='Test Name'/>);
+        render(<Menu name='Test Name'/>, {wrapper: TestRouter});
         expect(screen.queryByTestId('GWCloudLogo')).toBeInTheDocument();
         expect(screen.queryByText('Test Name')).toBeInTheDocument();
         expect(screen.queryByText('Logout')).toBeInTheDocument();
@@ -22,7 +15,7 @@ describe('the gwcloud menu component', () => {
 
     it('renders login when not provided a name', () => {
         expect.hasAssertions();
-        render(<Menu/>);
+        render(<Menu/>, {wrapper: TestRouter});
         expect(screen.queryByTestId('GWCloudLogo')).toBeInTheDocument();
         expect(screen.queryByText('Test Name')).not.toBeInTheDocument();
         expect(screen.queryByText('Logout')).not.toBeInTheDocument();

@@ -3,16 +3,10 @@ import { render, screen } from '@testing-library/react';
 
 import Menu from '../Menu';
 
-jest.mock('found', () => ({
-    Link: ({...component}) => {
-        delete component.exact;
-        return <a {...component}>{component.children}</a>;
-    }
-}));
 describe('the gwlab menu component', () => {
     it('renders logout when provided a name', () => {
         expect.hasAssertions();
-        render(<Menu name='Test Name' match={{location: {pathname: '/'}}}/>);
+        render(<Menu name='Test Name' match={{location: {pathname: '/'}}}/>, {wrapper: TestRouter});
         expect(screen.queryByTestId('GWLabLogo')).toBeInTheDocument();
         expect(screen.queryByText('Test Name')).toBeInTheDocument();
         expect(screen.queryByText('Logout')).toBeInTheDocument();
@@ -21,7 +15,7 @@ describe('the gwlab menu component', () => {
     
     it('renders login when not provided a name', () => {
         expect.hasAssertions();
-        render(<Menu match={{location: {pathname: '/'}}}/>);
+        render(<Menu match={{location: {pathname: '/'}}}/>, {wrapper: TestRouter});
         expect(screen.queryByTestId('GWLabLogo')).toBeInTheDocument();
         expect(screen.queryByText('Test Name')).not.toBeInTheDocument();
         expect(screen.queryByText('Logout')).not.toBeInTheDocument();
@@ -30,7 +24,7 @@ describe('the gwlab menu component', () => {
 
     it('renders module links', () => {
         expect.hasAssertions();
-        render(<Menu name='Test Name' match={{location: {pathname: '/'}}}/>);
+        render(<Menu name='Test Name' match={{location: {pathname: '/'}}}/>, {wrapper: TestRouter});
         expect(screen.queryByText('CWFollowup')).toBeInTheDocument();
         expect(screen.queryByText('Viterbi')).toBeInTheDocument();
     });

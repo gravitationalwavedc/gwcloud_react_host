@@ -69,10 +69,8 @@ class RemoteModule extends React.Component {
         HarnessApi.getSecondaryMenu = null;
 
         // Check if this module consumes any api from the harness and set the pointer
-        if ('setHarnessApi' in m) {
-            HarnessApi.getSecondaryMenu = null;
+        if ('setHarnessApi' in m)
             m['setHarnessApi'](HarnessApi);
-        }
 
         // Get the routes from the module and then update the parent routes
         updateRoutes(this.props._path, m['getRoutes']());
