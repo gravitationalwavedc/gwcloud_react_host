@@ -1,26 +1,31 @@
-import React from "react";
-import { render } from '@testing-library/react';
-import { createMockEnvironment } from "relay-test-utils";
-import { QueryRenderer } from 'react-relay';
+import React from 'react';
+import { createMockEnvironment } from 'relay-test-utils';
+import { RouterContext } from 'found';
 
+import '@testing-library/jest-dom/extend-expect';
 
-global.queryRendererSetup = (inputQuery, componentToRender) => {
-    const environment = createMockEnvironment()
+global.router = {
+    push: jest.fn(),
+    replace: jest.fn(),
+    go: jest.fn(),
+    createHref: jest.fn(),
+    createLocation: jest.fn(),
+    isActive: jest.fn(),
+    matcher: {
+        match: jest.fn(),
+        getRoutes: jest.fn(),
+        isActive: jest.fn(),
+        format: jest.fn()
+    },
+    addTransitionHook: jest.fn(),
+    addNavigationListener: jest.fn(),
+};
 
-    render(
-        <QueryRenderer
-            environment={environment}
-            query={inputQuery}
-            variables={{}}
-            render={({ error, props }) => {
-                if (props) {
-                    return componentToRender(props);
-                } else if (error) {
-                    return error.message;
-                }
-                return 'Loading...';
-            }}
-        />
-    )
-    return environment
-}
+global.TestRouter = ({children}) => {
+    const routerContext = {router: router, match: {}};
+    return <RouterContext.Provider value={routerContext}>
+        {children}
+    </RouterContext.Provider>;
+};
+
+global.environment = createMockEnvironment();

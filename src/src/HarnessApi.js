@@ -1,5 +1,5 @@
-import {getEnvironment} from "./Environment";
-import {currentProject, Projects} from "./utils";
+import {getEnvironment} from './Environment';
+import {currentProject, Projects} from './utils';
 
 function setAuthTokens(token, refreshToken) {
     localStorage.authToken = token;
@@ -7,7 +7,7 @@ function setAuthTokens(token, refreshToken) {
 }
 
 function hasAuthToken() {
-    return !(localStorage.getItem("authToken") === '' || localStorage.getItem("authToken") === null);
+    return !(localStorage.getItem('authToken') === '' || localStorage.getItem('authToken') === null);
 }
 
 const HarnessApi = {
@@ -20,7 +20,8 @@ const HarnessApi = {
     currentUser: null,
     // Returns the current project
     currentProject: currentProject,
-    projects: Projects
+    projects: Projects,
+    getSecondaryMenu: null
 };
 
 export default HarnessApi;

@@ -1,20 +1,21 @@
-import React from "react";
-import {expect, jest} from "@jest/globals";
-import TestRenderer from 'react-test-renderer';
-import Layout from "../Layout";
-import {createMockEnvironment, MockPayloadGenerator} from "relay-test-utils";
-import {QueryRenderer} from 'react-relay';
-import {mockLocationHostName} from "./testUtils";
+import React from 'react';
+import { createMockEnvironment, MockPayloadGenerator } from 'relay-test-utils';
+import { QueryRenderer } from 'react-relay';
+import { render, screen } from '@testing-library/react';
+import { mockLocationHostName } from './testUtils';
+import HarnessApi from '../HarnessApi';
+import Layout from '../Layout';
 
 jest.mock('found', () => ({
-    Link: component => <a {...component}>{component.children}</a>
-}))
+    Link: ({...component}) => {
+        delete component.exact;
+        return <a {...component}>{component.children}</a>;
+    }
+}));
 
-test('Layout renders login if user is not set', () => {
-    mockLocationHostName("gwlab.org.au");
-
+describe('layout component', () => {
     const environment = createMockEnvironment();
-    const MyTestRenderer = () => (
+    const TestRenderer = () => (
         <QueryRenderer
             environment={environment}
             query={graphql`
@@ -36,64 +37,56 @@ test('Layout renders login if user is not set', () => {
         />
     );
 
-    const renderer = TestRenderer.create(<MyTestRenderer/>);
-    environment.mock.resolveMostRecentOperation(operation =>
-        MockPayloadGenerator.generate(operation, {
-            gwclouduser() {
-                return {
-                    userId: null,
-                    username: null,
-                    firstName: null,
-                    lastName: null
-                }
-            }
-        }),
-    );
+    const mockUser = {
+        UserDetails() {
+            return {
+                userId: 4,
+                username: 'billnye',
+                firstName: 'Bill',
+                lastName: 'Nye',
+                isLigoUser: false
+            };
+        }
+    };
 
-    // todo: Check that login is in the document
-    expect(renderer).toMatchSnapshot();
-});
+    it('renders for gwcloud', () => {
+        expect.hasAssertions();
+        mockLocationHostName('gwcloud.org.au');
+        render(<TestRenderer/>);
+        environment.mock.resolveMostRecentOperation(operation =>
+            MockPayloadGenerator.generate(operation, mockUser),
+        );
+        expect(screen.queryByTestId('GWCloudLogo')).toBeInTheDocument();
+    });
 
-test('Layout renders login if user is set', () => {
-    mockLocationHostName("gwlab.org.au");
+    it('renders for gwlab', () => {
+        expect.hasAssertions();
+        mockLocationHostName('gwlab.org.au');
+        render(<TestRenderer/>);
+        environment.mock.resolveMostRecentOperation(operation =>
+            MockPayloadGenerator.generate(operation, mockUser),
+        );
+        expect(screen.queryByTestId('GWLabLogo')).toBeInTheDocument();
+    });
 
-    const environment = createMockEnvironment();
-    const MyTestRenderer = () => (
-        <QueryRenderer
-            environment={environment}
-            query={graphql`
-                query LayoutUserSetTestQuery @relay_test_operation {
-                    gwclouduser {
-                        ...Layout_gwclouduser
-                    }
-                }
-              `}
-            variables={{}}
-            render={({error, props}) => {
-                if (props) {
-                  return <Layout {...props} match={{location: {pathname: '/'}}}/>;
-                } else if (error) {
-                    return error.message;
-                }
-                return 'Loading...';
-            }}
-        />
-    );
-
-    const renderer = TestRenderer.create(<MyTestRenderer/>);
-    environment.mock.resolveMostRecentOperation(operation =>
-        MockPayloadGenerator.generate(operation, {
-            gwclouduser() {
-                return {
-                    userId: 4,
-                    username: "billnye",
-                    firstName: "Bill",
-                    lastName: "Nye"
-                }
-            }
-        }),
-    );
-
-    // todo: Check that the user name and logout is in the document
-    expect(renderer).toMatchSnapshot();
+    it('renders for gwlandscape', () => {
+        expect.hasAssertions();
+        mockLocationHostName('gwlandscape.org.au');
+        render(<TestRenderer/>);
+        environment.mock.resolveMostRecentOperation(operation =>
+            MockPayloadGenerator.generate(operation, mockUser),
+        );
+        expect(screen.queryByTestId('GWLandscapeLogo')).toBeInTheDocument();
+    });
+        
+    it('renders a secondary menu if present in HarnessApi', () => {
+        expect.hasAssertions();
+        mockLocationHostName('gwlandscape.org.au');
+        HarnessApi.getSecondaryMenu = () => () => <div>Test Secondary Menu</div>;
+        render(<TestRenderer/>);
+        environment.mock.resolveMostRecentOperation(operation =>
+            MockPayloadGenerator.generate(operation, mockUser),
+        );
+        expect(screen.queryByText('Test Secondary Menu')).toBeInTheDocument();
+    });
 });

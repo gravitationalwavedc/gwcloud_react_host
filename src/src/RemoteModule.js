@@ -1,7 +1,7 @@
-import React from "react";
-import {updateRoutes} from "./UpdatableResolver";
-import HarnessApi from "./HarnessApi";
-import Loading from "./components/Loading";
+import React from 'react';
+import {updateRoutes} from './UpdatableResolver';
+import HarnessApi from './HarnessApi';
+import Loading from './components/Loading';
 
 const module_map = {};
 
@@ -24,7 +24,7 @@ class RemoteModule extends React.Component {
 
     componentDidMount() {
         // Check if this module is current loading
-        if (module_map[this.props._module_url] === "loading")
+        if (module_map[this.props._module_url] === 'loading')
             // Don't do anything, we've been remounted during the loading of the specified module
             return;
 
@@ -33,7 +33,7 @@ class RemoteModule extends React.Component {
             this.loadModule(module_map[this.props._module_url]);
         else {
             // Mark this module as loading
-            module_map[this.props._module_url] = "loading";
+            module_map[this.props._module_url] = 'loading';
 
             injectScript(this.props._module_url)
                 .then(() => {
@@ -42,30 +42,32 @@ class RemoteModule extends React.Component {
 
                     // Initializes the share scope.
                     // This fills it with known provided modules from this build and all remotes
-                    __webpack_init_sharing__("default");
+                    __webpack_init_sharing__('default');
                     const container = window[this.props._path];
 
                     // Initialize the container, it may provide shared modules
                     container.init(__webpack_share_scopes__.default);
 
                     // Find the index module which has remote module exports
-                    const p = container.get("index");
+                    const p = container.get('index');
 
                     // Wait for the promise to resolve
                     p.then(module => {
                         // Get the index module and store it in the module map
-                        module_map[this.props._module_url] = module()
+                        module_map[this.props._module_url] = module();
 
                         // Now prepare and load the module
-                        this.loadModule(module_map[this.props._module_url])
-                    })
+                        this.loadModule(module_map[this.props._module_url]);
+                    });
                 }).catch(error => {
-                console.error(error);
-            });
+                    console.error(error);
+                });
         }
     }
 
     loadModule(m) {
+        HarnessApi.getSecondaryMenu = null;
+
         // Check if this module consumes any api from the harness and set the pointer
         if ('setHarnessApi' in m)
             m['setHarnessApi'](HarnessApi);

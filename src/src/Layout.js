@@ -5,7 +5,7 @@ import {currentProject} from './utils';
 
 // regex list to match urls where the menu should be hidden.
 const noMenuURLs = [
-    /\/auth\/(?!api-token).*/ 
+    /\/auth\/(?!api-token).*/
 ];
 
 const setUser = (user) => {
@@ -19,13 +19,17 @@ const Layout = ({gwclouduser, children, match}) => {
     const showMenu = !noMenuURLs.some(regex => regex.test(match.location.pathname));
     const Menu = currentProject().menu;
     const Helmet = currentProject().helmet;
+    const SecondaryMenu = HarnessApi.getSecondaryMenu ? HarnessApi.getSecondaryMenu() : () => null;
 
     return (
         <React.Fragment>
             <Helmet />
-            <header>
-                {showMenu && <Menu name={name} match={match}/>}
-            </header>
+            {
+                showMenu && <header>
+                    <Menu name={name} match={match}/>
+                    <SecondaryMenu />
+                </header>
+            }
             <main className="h-100" style={showMenu ? {paddingTop: currentProject().menuPadding} : null}>
                 {children}
             </main>

@@ -37,7 +37,7 @@ const Menu = ({name}) => {
     return (
         <Navbar fixed="top">
             <Navbar.Brand className="mr-auto">
-                <Link to="/" exact className="navbar-brand-link">
+                <Link to="/" exact className="navbar-brand-link" data-testid="GWLandscapeLogo">
                     <img src={GWLandscapeLogo} style={iconStyle}/>GWLandscape
                 </Link>
             </Navbar.Brand>
