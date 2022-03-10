@@ -3,6 +3,8 @@ import { render, screen } from '@testing-library/react';
 
 import Menu from '../Menu';
 
+// jest.mock('nanoid/nanoid', () => )
+
 describe('the gwlab menu component', () => {
     it('renders logout when provided a name', () => {
         expect.hasAssertions();

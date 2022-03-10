@@ -22,8 +22,8 @@ const subMenu = (name) => {
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
                     {
-                        modules.map(({name, homeLink}, index) => 
-                            <Link key={index} className="nav-link" to={homeLink} exact>
+                        modules.map(({name, homeLink}) => 
+                            <Link key={homeLink} className="nav-link" to={homeLink} exact>
                                 {name}
                             </Link>
                         )
@@ -34,7 +34,7 @@ const subMenu = (name) => {
                         {name}
                     </Navbar.Text>
                     <Nav.Link onClick={() => logout()}>
-                    Logout
+                        Logout
                     </Nav.Link>
                 </Nav>
             </Navbar.Collapse>
