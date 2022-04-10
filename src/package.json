@@ -1,16 +1,16 @@
 {
-  "name": "gwcloud-auth",
+  "name": "gwcloud-react-host",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start_gwcloud": "FORCE_DOMAIN=gwcloud NODE_ENV=development webpack serve --mode development --hot",
-    "start_gwlab": "FORCE_DOMAIN=gwlab NODE_ENV=development webpack serve --mode development --hot",
-    "start_gwlandscape": "FORCE_DOMAIN=gwlandscape NODE_ENV=development webpack serve --mode development --hot",
-    "build": "NODE_ENV=production webpack --mode production",
-    "relay": "relay-compiler --src ./src --schema ../../gwcloud-auth/src/react/data/schema.json --extensions=js --extensions=jsx",
+    "start_gwcloud": "npm run relay && npx cross-env FORCE_DOMAIN=gwcloud NODE_ENV=development webpack serve --mode development --hot",
+    "start_gwlab": "npm run relay &&  npx cross-env FORCE_DOMAIN=gwlab NODE_ENV=development webpack serve --mode development --hot",
+    "start_gwlandscape": "npm run relay &&  npx cross-env FORCE_DOMAIN=gwlandscape NODE_ENV=development webpack serve --mode development --hot",
+    "build": "npm run relay &&  npx cross-env NODE_ENV=production webpack --mode production",
+    "relay": "relay-compiler --src ./src --schema ../../gwcloud_auth/src/react/data/schema.json --extensions=js --extensions=jsx",
     "relay-ci": "relay-compiler --src ./src --schema .data/schema.json --extensions=js --extensions=jsx",
-    "test": "jest",
+    "test": "npm run relay && jest",
     "test-ci": "jest --ci --reporters=default --reporters=jest-junit"
   },
   "keywords": [],
