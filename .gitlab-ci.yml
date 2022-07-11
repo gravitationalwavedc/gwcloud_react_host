@@ -33,7 +33,9 @@ npm-tests:
 
   artifacts:
     reports:
-      cobertura: src/coverage/cobertura-coverage.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: src/coverage/cobertura-coverage.xml
       junit: src/junit.xml
 
 
