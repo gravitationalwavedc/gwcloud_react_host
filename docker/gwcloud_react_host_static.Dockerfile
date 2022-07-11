@@ -18,11 +18,11 @@ WORKDIR /
 COPY src /src
 
 # Copy the generate auth schema
-RUN mkdir -p /gwcloud-auth/src/react/data/
-RUN mv /tmp/gwcloud_auth/src/react/data/schema.json /gwcloud-auth/src/react/data/
+RUN mkdir -p /gwcloud_auth/src/react/data/
+RUN mv /tmp/gwcloud_auth/src/react/data/schema.json /gwcloud_auth/src/react/data/
 
 # Don't need the auth project now
-RUN rm -Rf /tmp/gwcloud-auth
+RUN rm -Rf /tmp/gwcloud_auth
 
 # Build webpack bundle
 RUN mkdir /static
@@ -36,7 +36,7 @@ RUN rm -Rf ~/.nvm/
 RUN apt-get remove -y python3 python-virtualenv
 RUN apt-get autoremove --purge -y
 
-RUN rm -Rf /gwcloud-auth
+RUN rm -Rf /gwcloud_auth
 
 ADD ./nginx/static.conf /etc/nginx/conf.d/nginx.conf
 
