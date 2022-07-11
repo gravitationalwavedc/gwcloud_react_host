@@ -179,7 +179,7 @@ export default class Resolver {
                     return route.render({
                         match,
                         Component: isComponentResolved ? Component : null,
-                        props: match,
+                        props: {match, router},
                     });
                 }
 
