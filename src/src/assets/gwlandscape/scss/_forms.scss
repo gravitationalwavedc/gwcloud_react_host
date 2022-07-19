@@ -10,9 +10,12 @@ p.text-danger.small {
     .form-control, 
     .custom-select,
     .gw-select__control {
-        border: none;
+        border: 3px solid $primary;
+        color: $primary;
+        text-align: right;
+        text-transform: capitalize;
+        font-weight: bold;
         box-shadow: $shadow-inner;
-        background-color: $gray-200;
     }
 
     .input-group-text {
@@ -21,10 +24,16 @@ p.text-danger.small {
 }
 
 // Buttons
-.btn-primary {
-   box-shadow: $shadow-md;
+.btn.btn-form {
+    color: $blue-100 !important;
+    background-color: $primary;
+    margin: 1rem 0;
+    border: 3px solid $primary;
+    font-weight: bold;
+    text-transform: uppercase;
 
-   &:hover {
-        box-shadow: $shadow-base;
-   }
+    // &:hover {
+    //     color: $blue-500;
+    // }
 }
+
