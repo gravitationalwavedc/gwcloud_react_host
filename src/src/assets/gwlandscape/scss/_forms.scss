@@ -13,9 +13,12 @@ p.text-danger.small {
         border: 3px solid $primary;
         color: $primary;
         text-align: right;
-        text-transform: capitalize;
         font-weight: bold;
         box-shadow: $shadow-inner;
+    }
+
+    .text-left {
+      text-align: left;
     }
 
     .input-group-text {
@@ -31,9 +34,4 @@ p.text-danger.small {
     border: 3px solid $primary;
     font-weight: bold;
     text-transform: uppercase;
-
-    // &:hover {
-    //     color: $blue-500;
-    // }
 }
-
