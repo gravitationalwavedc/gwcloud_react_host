@@ -3,11 +3,10 @@ import {logout} from '../../Environment';
 import {Link} from 'found';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import { HiOutlineUserCircle, HiOutlineLogout } from 'react-icons/hi';
-import GWLandscapeLogo from '../../assets/gwlandscape/images/logo.png';
+import GWLandscapeLogo from '../../assets/gwlandscape/images/GWLandscape-logo.svg';
 
 const iconStyle = {
-    height: '20px',
+    height: '50px',
     margin: '-2px 2px 0 0'
 };
 
@@ -15,11 +14,17 @@ const subMenu = (name) => {
     if(name){
         return (
             <Nav>
-                <Navbar.Text className="justify-content-end mr-3">
-                    <HiOutlineUserCircle style={iconStyle}/> {name}
-                </Navbar.Text>
+                <Nav.Link to="/" as={Link}>
+                   Home 
+                </Nav.Link>
+                <Nav.Link to="/compas/single-binary-form/" as={Link}>
+                   Binary evolution 
+                </Nav.Link>
+                <Nav.Link to="/compas/publications/" as={Link}>
+                   Published Datasets
+                </Nav.Link>
                 <Nav.Link onClick={() => logout()}>
-                    <HiOutlineLogout style={iconStyle}/> Logout
+                   Logout
                 </Nav.Link>
             </Nav>
         );
@@ -35,10 +40,10 @@ const subMenu = (name) => {
 const Menu = ({name}) => {
     const SubMenu = subMenu(name);
     return (
-        <Navbar fixed="top">
+        <Navbar fixed="top" className="gwlandscape-menu">
             <Navbar.Brand className="mr-auto">
                 <Link to="/" exact className="navbar-brand-link" data-testid="GWLandscapeLogo">
-                    <img src={GWLandscapeLogo} style={iconStyle}/>GWLandscape
+                    <img src={GWLandscapeLogo} style={iconStyle}/>
                 </Link>
             </Navbar.Brand>
             {SubMenu}
