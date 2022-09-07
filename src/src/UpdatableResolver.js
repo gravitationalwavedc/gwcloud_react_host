@@ -1,7 +1,6 @@
 import React from 'react';
 import {BrowserProtocol, queryMiddleware} from 'farce';
 import {createRender, makeRouteConfig,} from 'found';
-import getEnvironment from './Environment';
 import Enumerable from 'linq';
 import {gwCloudCreateFarceRouter, replaceRouteConfig} from './farce/GWCloudCreateFarceRouter';
 import Resolver from './router/Resolver';
@@ -44,17 +43,18 @@ class UpdatableResolver extends React.Component {
             return children;
         }
 
-        const t = React.cloneElement(this.props.routes, this.props.routes.props, copyChildren(this.props.routes.props.children));
+        const t = React.cloneElement(
+            this.props.routes,
+            this.props.routes.props,
+            copyChildren(this.props.routes.props.children)
+        );
 
         replaceRouteConfig(
             makeRouteConfig(t)
         );
 
         // Trigger a redraw
-        this.setState({
-            ...this.state
-        }
-        );
+        this.setState({ ...this.state }); // eslint-disable-line
     }
 
     createResolver() {

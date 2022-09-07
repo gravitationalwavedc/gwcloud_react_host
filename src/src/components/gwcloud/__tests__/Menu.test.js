@@ -1,7 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-
 import Menu from '../Menu';
+
+/* global TestRouter */
 
 describe('the gwcloud menu component', () => {
     it('renders logout when provided a name', () => {

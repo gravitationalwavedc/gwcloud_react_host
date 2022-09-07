@@ -25,7 +25,7 @@ function logout(path) {
     router.replace(path ? '/auth/?next=' + path : '/auth/');
 }
 
-function requestRefreshToken(name) {
+function requestRefreshToken() {
     return fetch(IS_DEV ? modules()['auth'].dev_graphql_url : modules()['auth'].graphql_url, {
         method: 'POST',
         headers: {
@@ -46,16 +46,17 @@ function requestRefreshToken(name) {
     })
         .then(response => response.json())
         .then(json => {
-            if ('errors' in json && json['errors'].length && json['errors'][0].message === 'Refresh token is expired') {
+            if ('errors' in json && 
+                json['errors'].length && 
+                json['errors'][0].message === 'Refresh token is expired') {
                 logout(location.pathname);
                 return null;
             }
             HarnessApi.setAuthTokens(json.data.refreshToken.token, json.data.refreshToken.refreshToken);
             return json.data.refreshToken.token;
         })
-        .catch(err => {
+        .catch(() => {
             // Something has gone terribly wrong... Log out the user and redirect them to login
-            console.log('Couldn\'t refresh token', err);
             logout(location.pathname);
         });
 }
@@ -74,14 +75,10 @@ function getEnvironment(name) {
         authMiddleware({
             token: () => localStorage.authToken,
             prefix: 'JWT ',
-            tokenRefreshPromise: (req) => requestRefreshToken()
+            tokenRefreshPromise: () => requestRefreshToken()
         }),
         (next) => async (req) => {
-            console.log('RelayRequest', req);
-
             const res = await next(req);
-            console.log('RelayResponse', res);
-
             return res;
         },
     ], {

@@ -1,4 +1,5 @@
 import React from 'react';
+import {graphql} from 'react-relay';
 import {createFragmentContainer} from 'react-relay';
 import HarnessApi from './HarnessApi';
 import {currentProject} from './utils';
