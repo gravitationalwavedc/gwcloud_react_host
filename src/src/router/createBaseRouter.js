@@ -15,15 +15,15 @@ const __DEV__ = false;
 let router = () => {}; 
 
 function createBaseRouter({
-                                             renderPending,
-                                             renderReady,
-                                             renderError,
-                                             render = createRender({
-                                                 renderPending,
-                                                 renderReady,
-                                                 renderError,
-                                             }),
-                                         }) {
+    renderPending,
+    renderReady,
+    renderError,
+    render = createRender({
+        renderPending,
+        renderReady,
+        renderError,
+    }),
+}) {
     const propTypes = {
         store: PropTypes.object.isRequired,
         match: PropTypes.object.isRequired,
@@ -222,4 +222,4 @@ function createBaseRouter({
 export {
     createBaseRouter,
     router
-}
+};

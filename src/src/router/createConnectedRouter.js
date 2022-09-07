@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import ActionTypes from 'found/ActionTypes';
-import {createBaseRouter} from "./createBaseRouter";
+import {createBaseRouter} from './createBaseRouter';
 
 function resolveMatch(match) {
     return {
@@ -11,9 +11,9 @@ function resolveMatch(match) {
 }
 
 export default function createConnectedRouter({
-                                                  getFound = ({ found }) => found,
-                                                  ...options
-                                              }) {
+    getFound = ({ found }) => found,
+    ...options
+}) {
     return connect(
         state => {
             const { match, resolvedMatch } = getFound(state);

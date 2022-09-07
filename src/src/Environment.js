@@ -1,11 +1,11 @@
 import {Environment, RecordSource, Store,} from 'relay-runtime';
-import modules from "./modules";
-import {IS_DEV} from "./utils";
-import HarnessApi from "./HarnessApi";
+import modules from './modules';
+import {IS_DEV} from './utils';
+import HarnessApi from './HarnessApi';
 import 'regenerator-runtime/runtime';
-import {RelayNetworkLayer, urlMiddleware} from "react-relay-network-modern/node8";
-import authMiddleware from "./AuthMiddleware";
-import {router} from './router/createBaseRouter'
+import {RelayNetworkLayer, urlMiddleware} from 'react-relay-network-modern/node8';
+import authMiddleware from './AuthMiddleware';
+import {router} from './router/createBaseRouter';
 
 // Environment map singleton
 let environment_map = {};
@@ -15,14 +15,14 @@ function logout(path) {
     environment_map = {};
 
     // Clear the auth tokens and user
-    HarnessApi.setAuthTokens("", "");
+    HarnessApi.setAuthTokens('', '');
     HarnessApi.currentUser = null;
 
     // Update the header
     HarnessApi.retryHarnessUserDetails();
 
     // Redirect to the login page
-    router.replace(path ? "/auth/?next=" + path : "/auth/");
+    router.replace(path ? '/auth/?next=' + path : '/auth/');
 }
 
 function requestRefreshToken(name) {
@@ -40,13 +40,13 @@ function requestRefreshToken(name) {
               }
             }`,
             variables: {
-                refreshToken: localStorage.authRefreshToken || ""
+                refreshToken: localStorage.authRefreshToken || ''
             },
         }),
     })
         .then(response => response.json())
         .then(json => {
-            if ('errors' in json && json['errors'].length && json['errors'][0].message === "Refresh token is expired") {
+            if ('errors' in json && json['errors'].length && json['errors'][0].message === 'Refresh token is expired') {
                 logout(location.pathname);
                 return null;
             }
@@ -55,9 +55,9 @@ function requestRefreshToken(name) {
         })
         .catch(err => {
             // Something has gone terribly wrong... Log out the user and redirect them to login
-            console.log("Couldn't refresh token", err);
+            console.log('Couldn\'t refresh token', err);
             logout(location.pathname);
-        })
+        });
 }
 
 function getEnvironment(name) {
@@ -73,7 +73,7 @@ function getEnvironment(name) {
         }),
         authMiddleware({
             token: () => localStorage.authToken,
-            prefix: "JWT ",
+            prefix: 'JWT ',
             tokenRefreshPromise: (req) => requestRefreshToken()
         }),
         (next) => async (req) => {
@@ -89,7 +89,7 @@ function getEnvironment(name) {
     });
 
     // Create the store
-    const store = new Store(new RecordSource())
+    const store = new Store(new RecordSource());
 
     // Create the environment and store it in the environment map singleton
     environment_map[name] = new Environment({

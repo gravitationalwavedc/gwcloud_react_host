@@ -1,10 +1,10 @@
-import React from 'react'
-import {BrowserProtocol, queryMiddleware} from "farce";
+import React from 'react';
+import {BrowserProtocol, queryMiddleware} from 'farce';
 import {createRender, makeRouteConfig,} from 'found';
-import getEnvironment from "./Environment";
-import Enumerable from 'linq'
-import {gwCloudCreateFarceRouter, replaceRouteConfig} from "./farce/GWCloudCreateFarceRouter";
-import Resolver from "./router/Resolver";
+import getEnvironment from './Environment';
+import Enumerable from 'linq';
+import {gwCloudCreateFarceRouter, replaceRouteConfig} from './farce/GWCloudCreateFarceRouter';
+import Resolver from './router/Resolver';
 
 let updateRoutes = () => {
 };
@@ -28,14 +28,14 @@ class UpdatableResolver extends React.Component {
         function copyChildren(r) {
             const children = Enumerable.from(r).select(c => {
 
-                if (c.props && c.props.path === path + "*") {
+                if (c.props && c.props.path === path + '*') {
                     const props = {...c.props};
                     props.path = path;
                     props.Component = null;
                     return React.cloneElement(c, {key: keyCounter++, ...props}, routes);
                 }
 
-                return React.cloneElement(c, {key: keyCounter++, ...c.props}, copyChildren(c.props.children))
+                return React.cloneElement(c, {key: keyCounter++, ...c.props}, copyChildren(c.props.children));
             }).toArray();
 
             if (!children.length)
@@ -52,9 +52,9 @@ class UpdatableResolver extends React.Component {
 
         // Trigger a redraw
         this.setState({
-                ...this.state
-            }
-        )
+            ...this.state
+        }
+        );
     }
 
     createResolver() {
@@ -76,9 +76,9 @@ class UpdatableResolver extends React.Component {
     render() {
         if (!this.state.router) {
             setTimeout(() => this.setState({
-                    router: this.createRouter(this.props.routes),
-                    resolver: this.createResolver()
-                }
+                router: this.createRouter(this.props.routes),
+                resolver: this.createResolver()
+            }
             ), 0);
             return null;
         }
