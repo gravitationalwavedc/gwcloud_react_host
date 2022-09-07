@@ -53,7 +53,7 @@ function currentProject() {
 
     // Match the host name against the domain regexs to match the project
     for (const project in Projects) {
-        if (!Projects.hasOwnProperty(project))
+        if (!Object.prototype.hasOwnProperty.call(Projects, project))
             continue;
 
         if (Projects[project].domainRegex.test(location.hostname))

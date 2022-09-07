@@ -67,7 +67,8 @@ export default class Resolver {
             : Components;
         const earlyData = await Promise.all(fetches.map(checkResolved));
 
-        let fetchedComponents;
+        // Esling disabled because there's no sensible way to initialise this var.
+        let fetchedComponents; // eslint-disable-line 
 
         if (!earlyComponents.every(isResolved) || !earlyData.every(isResolved)) {
             const pendingElements = this.createElements(
