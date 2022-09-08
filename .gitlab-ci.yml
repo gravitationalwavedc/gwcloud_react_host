@@ -26,7 +26,7 @@ npm-tests:
     - mv react/data/schema.json ../../../src/.data/
     - cd ../../../src/
     - export NVM_DIR="$HOME/.nvm" && . "$NVM_DIR/nvm.sh" --no-use
-    - eval "[ -f .nvmrc ] && nvm install && nvm use && nvm npm@8.5.5" 
+    - eval "[ -f .nvmrc ] && nvm install && nvm use && nvm npm@8.18.0" 
     - npm install
     - npm run relay-ci
     - npm run test-ci
