@@ -21,11 +21,13 @@ global.router = {
     addNavigationListener: jest.fn(),
 };
 
-global.TestRouter = ({children}) => {
-    const routerContext = {router: router, match: {}};
+const FakeRouter = ({children}) => {
+    const routerContext = {router: global.router, match: {}};
     return <RouterContext.Provider value={routerContext}>
         {children}
     </RouterContext.Provider>;
 };
+
+global.TestRouter = FakeRouter;
 
 global.environment = createMockEnvironment();

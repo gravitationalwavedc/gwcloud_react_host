@@ -61,7 +61,7 @@ class GWCloudApp extends React.Component {
                          }                         
                        }
                     `}
-                    render={({Component, props, retry, error}) => {
+                    render={({Component, props, retry }) => {
                         if (!Component || !props)
                             return <div/>;
 

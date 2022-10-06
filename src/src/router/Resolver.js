@@ -10,9 +10,9 @@ import isPromise from 'is-promise';
 import isEqual from 'lodash/isEqual';
 import React from 'react';
 import warning from 'warning';
-import QuerySubscription from "./QuerySubscription";
-import renderElement from "./renderElement";
-import ReadyStateRenderer from "./ReadyStateRenderer";
+import QuerySubscription from './QuerySubscription';
+import renderElement from './renderElement';
+import ReadyStateRenderer from './ReadyStateRenderer';
 
 
 export default class Resolver {
@@ -27,9 +27,7 @@ export default class Resolver {
         const queries = getRouteValues(
             routeMatches,
             route => route.getQuery,
-            route => {
-                return {query: route.query, environment: route.environment}
-            },
+            route => ({query: route.query, environment: route.environment}),
         );
 
         const cacheConfigs = getRouteValues(
@@ -69,7 +67,8 @@ export default class Resolver {
             : Components;
         const earlyData = await Promise.all(fetches.map(checkResolved));
 
-        let fetchedComponents;
+        // Esling disabled because there's no sensible way to initialise this var.
+        let fetchedComponents; // eslint-disable-line 
 
         if (!earlyComponents.every(isResolved) || !earlyData.every(isResolved)) {
             const pendingElements = this.createElements(
@@ -124,7 +123,7 @@ export default class Resolver {
     ) {
         const querySubscriptions = queries.map((query, i) => {
             if (query.query && !query.environment) {
-                throw new Error("Can't have a query without an environment");
+                throw new Error('Can\'t have a query without an environment');
             }
 
             if (!query.query) {

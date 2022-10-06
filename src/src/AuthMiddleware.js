@@ -1,4 +1,4 @@
-import {isFunction} from "lodash";
+import {isFunction} from 'lodash';
 
 function authMiddleware(opts) {
     const {
@@ -22,14 +22,14 @@ function authMiddleware(opts) {
             const res = await next(req);
 
             // Graphene returns 200 and only add's an error with a string
-            if ('errors' in res && res['errors'].length && res['errors'][0].message === "Signature has expired") {
-                throw new Error("Expired Token")
+            if ('errors' in res && res['errors'].length && res['errors'][0].message === 'Signature has expired') {
+                throw new Error('Expired Token');
             }
 
             return res;
         } catch (e) {
             if (e && tokenRefreshPromise) {
-                if (e.message === "Expired Token") {
+                if (e.message === 'Expired Token') {
                     if (tokenRefreshPromise) {
                         if (!tokenRefreshInProgress) {
                             tokenRefreshInProgress = Promise.resolve(tokenRefreshPromise(req, e.res))

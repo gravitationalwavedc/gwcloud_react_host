@@ -59,8 +59,6 @@ class RemoteModule extends React.Component {
                         // Now prepare and load the module
                         this.loadModule(module_map[this.props._module_url]);
                     });
-                }).catch(error => {
-                    console.error(error);
                 });
         }
     }

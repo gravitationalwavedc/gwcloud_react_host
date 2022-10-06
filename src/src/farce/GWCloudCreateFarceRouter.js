@@ -3,18 +3,18 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import createFarceStore from 'found/createFarceStore';
-import createConnectedRouter from "../router/createConnectedRouter";
+import createConnectedRouter from '../router/createConnectedRouter';
 
 let replaceRouteConfig = () => {};
 
 function gwCloudCreateFarceRouter({
-                                              store,
-                                              historyProtocol,
-                                              historyMiddlewares,
-                                              historyOptions,
-                                              routeConfig,
-                                              ...options
-                                          }) {
+    store,
+    historyProtocol,
+    historyMiddlewares,
+    historyOptions,
+    routeConfig,
+    ...options
+}) {
     const ConnectedRouter = createConnectedRouter(options);
 
     class FarceRouter extends React.Component {
@@ -56,4 +56,4 @@ function gwCloudCreateFarceRouter({
 export {
     gwCloudCreateFarceRouter,
     replaceRouteConfig
-}
+};

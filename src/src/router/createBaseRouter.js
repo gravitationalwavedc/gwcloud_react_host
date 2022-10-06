@@ -15,15 +15,15 @@ const __DEV__ = false;
 let router = () => {}; 
 
 function createBaseRouter({
-                                             renderPending,
-                                             renderReady,
-                                             renderError,
-                                             render = createRender({
-                                                 renderPending,
-                                                 renderReady,
-                                                 renderError,
-                                             }),
-                                         }) {
+    renderPending,
+    renderReady,
+    renderError,
+    render = createRender({
+        renderPending,
+        renderReady,
+        renderError,
+    }),
+}) {
     const propTypes = {
         store: PropTypes.object.isRequired,
         match: PropTypes.object.isRequired,
@@ -82,7 +82,8 @@ function createBaseRouter({
                 if (window.__FOUND_HOT_RELOAD__) {
                     warning(
                         !window.__FOUND_REPLACE_ROUTE_CONFIG__,
-                        'Replacing existing hot reloading hook. Do not render more than one router instance when using hot reloading.',
+                        `Replacing existing hot reloading hook. Do not render more
+                         than one router instance when using hot reloading.`, 
                     );
 
                     window.__FOUND_REPLACE_ROUTE_CONFIG__ = router.replaceRouteConfig;
@@ -208,7 +209,6 @@ function createBaseRouter({
 
     BaseRouter.propTypes = propTypes;
 
-    // FIXME: For some reason, using contextType doesn't work here.
     return mapContextToProps(
         {
             consumers: ReactReduxContext,
@@ -222,4 +222,4 @@ function createBaseRouter({
 export {
     createBaseRouter,
     router
-}
+};

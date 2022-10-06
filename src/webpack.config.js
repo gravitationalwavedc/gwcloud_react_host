@@ -1,7 +1,7 @@
-const webpack = require("webpack");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
-const deps = require("./package.json").dependencies;
+const webpack = require('webpack');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
+const deps = require('./package.json').dependencies;
 
 module.exports = {
     module: {
@@ -10,14 +10,14 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader",
+                    loader: 'babel-loader',
                     options: {
                         presets: [
-                            "@babel/preset-env",
-                            "@babel/preset-react"
+                            '@babel/preset-env',
+                            '@babel/preset-react'
                         ],
                         plugins: [
-                            "@babel/plugin-proposal-class-properties"
+                            '@babel/plugin-proposal-class-properties'
                         ]
                     }
                 }
@@ -26,16 +26,16 @@ module.exports = {
                 test: /\.html$/,
                 use: [
                     {
-                        loader: "html-loader"
+                        loader: 'html-loader'
                     }
                 ]
             },
             {
                 test: /\.scss$/,
                 use: [
-                    "style-loader",
-                    "css-loader",
-                    "sass-loader"
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
                 ]
             },
             {
@@ -66,9 +66,9 @@ module.exports = {
         ]
     },
     output: {
-        publicPath: "/",
-        globalObject: "this",
-	    path: "/static/"
+        publicPath: '/',
+        globalObject: 'this',
+        path: '/static/'
     },
     // Server Configuration options
     devServer: {
@@ -79,16 +79,16 @@ module.exports = {
     },
     plugins: [
         new ModuleFederationPlugin({
-            name: "react-host",
+            name: 'react-host',
             remotes: {},
             shared: {
                 ...deps
             }
         }),
         new HtmlWebPackPlugin({
-            template: "./src/index.html",
-            filename: "./index.html",
-	        hash: true,
+            template: './src/index.html',
+            filename: './index.html',
+            hash: true,
         }),
         new webpack.DefinePlugin({
             'process.env': {
