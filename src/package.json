@@ -128,8 +128,5 @@
       "jest-watch-typeahead/filename",
       "jest-watch-typeahead/testname"
     ]
-  },
-  "devDependencies": {
-    "stylelint-config-recommended": "^9.0.0"
   }
 }
