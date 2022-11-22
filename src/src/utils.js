@@ -3,6 +3,7 @@ import GWLabMenu from './components/gwlab/Menu';
 import GWLabHelmet from './components/gwlab/Helmet';
 import GWLandscapeMenu from './components/gwlandscape/Menu';
 import GWCloudMenu from './components/gwcloud/Menu';
+import GWLandscapeHelmet from './components/gwlandscape/Helmet';
 
 const IS_DEV = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 const FORCE_GWLAB = !process.env.NODE_ENV || process.env.FORCE_DOMAIN === 'gwlab';
@@ -33,7 +34,7 @@ const Projects = Object.freeze({
         name: 'GWLandscape',
         menu: GWLandscapeMenu,
         theme: './assets/gwlandscape/scss/theme.scss',
-        helmet: Helmet,
+        helmet: GWLandscapeHelmet,
         menuPadding: '64px'
     }
 });
