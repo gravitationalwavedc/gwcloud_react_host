@@ -10,19 +10,21 @@ const iconStyle = {
     margin: '-2px 2px 0 0'
 };
 
+// Add these back in when they're ready to be actually used.
+// <Nav.Link to="/" as={Link}>
+//    Home 
+// </Nav.Link>
+// <Nav.Link to="/compas/single-binary-form/" as={Link}>
+//    Binary evolution 
+// </Nav.Link>
+// <Nav.Link to="/compas/publications/" as={Link}>
+//    Published Datasets
+// </Nav.Link>
+
 const subMenu = (name) => {
     if(name){
         return (
             <Nav>
-                <Nav.Link to="/" as={Link}>
-                   Home 
-                </Nav.Link>
-                <Nav.Link to="/compas/single-binary-form/" as={Link}>
-                   Binary evolution 
-                </Nav.Link>
-                <Nav.Link to="/compas/publications/" as={Link}>
-                   Published Datasets
-                </Nav.Link>
                 <Nav.Link onClick={() => logout()}>
                    Logout
                 </Nav.Link>
