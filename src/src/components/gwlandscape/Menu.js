@@ -1,6 +1,6 @@
 import React from 'react';
-import {logout} from '../../Environment';
-import {Link} from 'found';
+import { logout } from '../../Environment';
+import { Link } from 'found';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import GWLandscapeLogo from '../../assets/gwlandscape/images/GWLandscape-logo.svg';
@@ -10,21 +10,20 @@ const iconStyle = {
     margin: '-2px 2px 0 0'
 };
 
-// Add these back in when they're ready to be actually used.
-// <Nav.Link to="/" as={Link}>
-//    Home 
-// </Nav.Link>
-// <Nav.Link to="/compas/single-binary-form/" as={Link}>
-//    Binary evolution 
-// </Nav.Link>
-// <Nav.Link to="/compas/publications/" as={Link}>
-//    Published Datasets
-// </Nav.Link>
 
 const subMenu = (name) => {
     if(name){
         return (
             <Nav>
+                <Nav.Link to="/" as={Link}>
+                   Home 
+                </Nav.Link>
+                <Nav.Link to="/compas/single-binary-form/" as={Link}>
+                   Binary evolution 
+                </Nav.Link>
+                <Nav.Link to="/compas/publications/" as={Link}>
+                   Published Datasets
+                </Nav.Link>
                 <Nav.Link onClick={() => logout()}>
                    Logout
                 </Nav.Link>
