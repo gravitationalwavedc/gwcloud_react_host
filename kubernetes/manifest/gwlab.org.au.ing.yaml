@@ -20,6 +20,9 @@ spec:
     - name: gwlab-cwfollowup
       service: gwlab-cwfollowup-nginx
       port: 8000
+    - name: gwlab-gwcandidate
+      service: gwlab-gwcandidate-nginx
+      port: 8000
   routes:
     - path: ~* ^(/auth/ligo/|/Shibboleth.sso.*)
       action:
@@ -35,6 +38,9 @@ spec:
     - path: ~* ^/cwfollowup/(static/.*|graphql)
       action:
         pass: gwlab-cwfollowup
+    - path: ~* ^/gwcandidate/(static/.*|graphql)
+      action:
+        pass: gwlab-gwcandidate
     - path: / 
       action:
         pass: gwcloud-react-host 

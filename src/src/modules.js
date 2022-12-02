@@ -28,6 +28,13 @@ function modules() {
 
                 graphql_url: '/cwfollowup/graphql',
                 bundle_url: '/cwfollowup/static/remoteEntry.js'
+            },
+            gwcandidate: {
+                dev_graphql_url: 'http://localhost:8005/graphql',
+                dev_bundle_url: 'http://localhost:3006/remoteEntry.js',
+
+                graphql_url: '/gwcandidate/graphql',
+                bundle_url: '/gwcandidate/static/remoteEntry.js'
             }
         };
     } else if (currentProject() === Projects.GWCLOUD) {
