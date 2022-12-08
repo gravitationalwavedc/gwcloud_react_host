@@ -27,9 +27,15 @@ html {
     font-weight: 700;
   }
 
-  h6, .h6, small.form-text, .byline {
+  h6, .h6, .byline {
     font-family: $font-sabon;
     font-size: 0.9em;
+    font-weight: 400;
+  }
+
+  small.form-text {
+    font-family: $font-sabon;
+    font-size: 0.7em;
     font-weight: 400;
   }
 
