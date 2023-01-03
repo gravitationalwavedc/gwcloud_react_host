@@ -59,10 +59,15 @@ html {
     font-size: 0.8em;
   }
 
-  input, button, select, a, .btn, .btn-primary {
+  button, select, a, .btn, .btn-primary {
     font-family: $font-gothic;
     text-transform: uppercase;
     font-weight: 700;
+    font-size: 0.8em;
+  }
+
+  input {
+    font-family: $font-gothic;
     font-size: 0.8em;
   }
 
