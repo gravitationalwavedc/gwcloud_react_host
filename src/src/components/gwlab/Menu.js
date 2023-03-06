@@ -8,6 +8,7 @@ import GWLabLogo from '../../assets/gwlab/images/logo.svg';
 
 const modules = [
     {domain: 'viterbi', name: 'Viterbi', homeLink: '/viterbi'},
+    {domain: 'gwcandidate', name: 'GWCandidate', homeLink: '/gwcandidate'},
     {domain: 'cwfollowup', name: 'CWFollowup', homeLink: '/cwfollowup'}
 ];
 
