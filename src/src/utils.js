@@ -1,9 +1,9 @@
-import {Helmet} from 'react-helmet';
 import GWLabMenu from './components/gwlab/Menu';
 import GWLabHelmet from './components/gwlab/Helmet';
 import GWLandscapeMenu from './components/gwlandscape/Menu';
 import GWCloudMenu from './components/gwcloud/Menu';
 import GWLandscapeHelmet from './components/gwlandscape/Helmet';
+import GWCloudHelmet from './components/gwcloud/GWCloudHelmet';
 
 const IS_DEV = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 const FORCE_GWLAB = !process.env.NODE_ENV || process.env.FORCE_DOMAIN === 'gwlab';
@@ -15,27 +15,27 @@ const Projects = Object.freeze({
         domainRegex: /(^|\.)gwlab\.org\.au$/,
         domain: 'gwlab',
         name: 'GWLab',
+        menuPadding: '116px',
         menu: GWLabMenu,
         helmet: GWLabHelmet,
-        menuPadding: '116px',
     },
     GWCLOUD: {
         domainRegex: /(^|\.)gwcloud\.org\.au$/,
         domain: 'gwcloud',
         name: 'GWCloud',
-        menu: GWCloudMenu,
         theme: './assets/gwcloud/scss/theme.scss',
-        helmet: Helmet,
-        menuPadding: '64px'
+        menuPadding: '64px',
+        menu: GWCloudMenu,
+        helmet: GWCloudHelmet,
     },
     GWLANDSCAPE: {
         domainRegex: /(^|\.)gwlandscape\.org\.au$/,
         domain: 'gwlandscape',
         name: 'GWLandscape',
-        menu: GWLandscapeMenu,
         theme: './assets/gwlandscape/scss/theme.scss',
+        menuPadding: '64px',
+        menu: GWLandscapeMenu,
         helmet: GWLandscapeHelmet,
-        menuPadding: '64px'
     }
 });
 
