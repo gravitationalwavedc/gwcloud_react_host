@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: gwcloud-react-host
-        image: nexus.gwdc.org.au/gwcloud-dev/gwcloud_react_host_static:0.29
+        image: nexus.gwdc.org.au/gwcloud-dev/gwcloud_react_host_static:0.30
         ports:
         - name: http
           containerPort: 8000
