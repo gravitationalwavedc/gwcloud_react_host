@@ -1,5 +1,8 @@
 // Custom styles
-
+.gwlandscape-menu.navbar {
+  background: $white;
+  background: linear-gradient(180deg, rgba(255,255,255,1) 95%, rgba(255,255,255,0) 100%);
+}
 
 .gwlandscape-menu.navbar .navbar-nav .nav-link {
   padding: 0.5rem 1rem 1rem 1rem;
