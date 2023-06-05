@@ -8,7 +8,7 @@
     "start_gwlab": "npm run relay &&  npx cross-env FORCE_DOMAIN=gwlab NODE_ENV=development webpack serve --mode development --hot",
     "start_gwlandscape": "npm run relay &&  npx cross-env FORCE_DOMAIN=gwlandscape NODE_ENV=development webpack serve --mode development --hot",
     "build": "npm run relay &&  npx cross-env NODE_ENV=production webpack --mode production",
-    "relay": "relay-compiler --src ./src --schema ../../gwcloud_auth/src/react/data/schema.json --extensions=js --extensions=jsx",
+    "relay": "relay-compiler --src ./src --schema ../../gwcloud-auth/src/react/data/schema.json --extensions=js --extensions=jsx",
     "relay-ci": "relay-compiler --src ./src --schema .data/schema.json --extensions=js --extensions=jsx",
     "test": "npm run relay && jest",
     "test-ci": "jest --ci --reporters=default --reporters=jest-junit"
