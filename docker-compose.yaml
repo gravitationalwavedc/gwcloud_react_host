@@ -5,7 +5,7 @@ services:
     build:
       dockerfile: ./docker/gwcloud_react_host_static.Dockerfile
       context: .
-    image: nexus.gwdc.org.au/gwcloud-dev/gwcloud_react_host_static:0.31
+    image: nexus.gwdc.org.au/gwcloud-dev/gwcloud_react_host_static:0.32
     container_name: gwcloud_react_host_static
     ports:
       - "80"
