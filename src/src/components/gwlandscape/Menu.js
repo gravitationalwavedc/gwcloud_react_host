@@ -27,6 +27,11 @@ const subMenu = (name) => {
                 <Nav.Link to="/compas/publications/" as={Link}>
                    Published Datasets
                 </Nav.Link>
+                <Nav.Link 
+                    href="https://gwlandscape-python.readthedocs.io/en/latest/gettingstarted.html"
+                >
+                   API 
+                </Nav.Link>
                 <Nav.Link onClick={() => logout()}>
                    Logout
                 </Nav.Link>
