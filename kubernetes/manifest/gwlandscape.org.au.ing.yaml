@@ -26,7 +26,7 @@ spec:
     - path: ~* ^/auth/(ligo_continue/.*|static/.*|graphql)
       action:
         pass: gwcloud-auth
-    - path: ~* ^/compas/(static/.*|files/.*|graphql)
+    - path: ~* ^/compas/(static/.*|files/.*|graphql|file_download/.*)
       action:
         pass: gwlandscape-compas
     - path: / 
