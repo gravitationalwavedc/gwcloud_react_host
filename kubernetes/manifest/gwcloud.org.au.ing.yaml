@@ -14,15 +14,14 @@ spec:
     - name: gwcloud-react-host
       service: gwcloud-react-host
       port: 8000
-    - name: gwcloud-job-server-http
-      service: gwcloud-job-server
-      port: 8000
-    - name: gwcloud-job-server-websocket
-      service: gwcloud-job-server
-      port: 8001
     - name: gwcloud-bilby
       service: gwcloud-bilby-nginx
+      buffering: false
+      client-max-body-size: '0'
+      connect-timeout: '600'
       port: 8000
+      read-timeout: '600'
+      send-timeout: '600'
   routes:
     - path: ~* ^(/auth/ligo/|/Shibboleth.sso.*)
       action:
@@ -35,12 +34,9 @@ spec:
     - path: ~* ^/bilby/(static/.*|graphql|file_download/.*)
       action:
         pass: gwcloud-bilby
-    - path: ~* ^(/job/ws.*)
-      action:
-        pass: gwcloud-job-server-websocket
-    - path: ~* ^(/job/.*)
-      action:
-        pass: gwcloud-job-server-http
+      location-snippets: |
+        proxy_request_buffering off;
+        send_timeout 600;
     - path: / 
       action:
         pass: gwcloud-react-host 
