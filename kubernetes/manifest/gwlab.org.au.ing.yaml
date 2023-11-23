@@ -16,13 +16,28 @@ spec:
       port: 8000
     - name: gwlab-viterbi
       service: gwlab-viterbi-nginx
+      buffering: false
+      client-max-body-size: '0'
+      connect-timeout: '600'
       port: 8000
+      read-timeout: '600'
+      send-timeout: '600'
     - name: gwlab-cwfollowup
       service: gwlab-cwfollowup-nginx
+      buffering: false
+      client-max-body-size: '0'
+      connect-timeout: '600'
       port: 8000
+      read-timeout: '600'
+      send-timeout: '600'
     - name: gwlab-gwcandidate
       service: gwlab-gwcandidate-nginx
+      buffering: false
+      client-max-body-size: '0'
+      connect-timeout: '600'
       port: 8000
+      read-timeout: '600'
+      send-timeout: '600'
   routes:
     - path: ~* ^(/auth/ligo/|/Shibboleth.sso.*)
       action:
@@ -35,12 +50,21 @@ spec:
     - path: ~* ^/viterbi/(static/.*|graphql)
       action:
         pass: gwlab-viterbi
+      location-snippets: |
+        proxy_request_buffering off;
+        send_timeout 600;
     - path: ~* ^/cwfollowup/(static/.*|graphql)
       action:
         pass: gwlab-cwfollowup
+      location-snippets: |
+        proxy_request_buffering off;
+        send_timeout 600;
     - path: ~* ^/gwcandidate/(static/.*|graphql)
       action:
         pass: gwlab-gwcandidate
+      location-snippets: |
+        proxy_request_buffering off;
+        send_timeout 600;
     - path: / 
       action:
         pass: gwcloud-react-host 

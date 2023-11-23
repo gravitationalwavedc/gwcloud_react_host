@@ -16,7 +16,12 @@ spec:
       port: 8000
     - name: gwlandscape-compas
       service: gwlandscape-compas-nginx
+      buffering: false
+      client-max-body-size: '0'
+      connect-timeout: '1d'
       port: 8000
+      read-timeout: '1d'
+      send-timeout: '1d'
   routes:
     - path: ~* ^(/auth/ligo/|/Shibboleth.sso.*)
       action:
@@ -29,6 +34,9 @@ spec:
     - path: ~* ^/compas/(static/.*|files/.*|graphql|file_download/.*)
       action:
         pass: gwlandscape-compas
+      location-snippets: |
+        proxy_request_buffering off;
+        send_timeout 1d;
     - path: / 
       action:
         pass: gwcloud-react-host 
